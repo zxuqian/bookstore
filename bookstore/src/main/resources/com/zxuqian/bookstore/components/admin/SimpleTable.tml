@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+   xmlns:p="tapestry:parameter">
+   
+<div class="mws-panel grid_8">
+	<div class="mws-panel-header">
+    	<span><i class="icon-table"></i> ${tableTitle}</span>
+    </div>
+    <div class="mws-panel-body no-padding">
+        <table class="mws-table">
+            <thead><t:delegate to="thead"></t:delegate></thead>
+            <tbody><t:delegate to="tbody"></t:delegate></tbody>
+        </table>
+    </div>
+</div>
+   
+</html>
