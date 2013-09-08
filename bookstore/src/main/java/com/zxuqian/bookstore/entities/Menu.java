@@ -9,11 +9,14 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.apache.tapestry5.beaneditor.NonVisual;
+
 @Entity
 public class Menu {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
+	@NonVisual
 	private Long id;
 	private String menuName;
 	private String url;

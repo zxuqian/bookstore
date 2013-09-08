@@ -87,6 +87,13 @@ of testing facilities designed for use with TestNG (http://testng.org/), so it's
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.26</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+		</dependency>
+            
             
 
     </dependencies>
