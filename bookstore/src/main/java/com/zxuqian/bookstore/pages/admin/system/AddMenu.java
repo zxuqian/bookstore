@@ -42,7 +42,7 @@ public class AddMenu {
 	@Inject
 	private MenuService menuService;
 	
-	public AddMenu() {
+	public void onPrepare() {
 		menu = new Menu();
 	}
 	

@@ -78,31 +78,31 @@ public class AppModule
      * a service named "RequestFilter" we use an explicit service id that we can reference
      * inside the contribution method.
      */
-//    public RequestFilter buildTimingFilter(final Logger log)
-//    {
-//        return new RequestFilter()
-//        {
-//            public boolean service(Request request, Response response, RequestHandler handler)
-//                    throws IOException
-//            {
-//                long startTime = System.currentTimeMillis();
-//
-//                try
-//                {
-//                    // The responsibility of a filter is to invoke the corresponding method
-//                    // in the handler. When you chain multiple filters together, each filter
-//                    // received a handler that is a bridge to the next filter.
-//
-//                    return handler.service(request, response);
-//                } finally
-//                {
-//                    long elapsed = System.currentTimeMillis() - startTime;
-//
-//                    log.info(String.format("Request time: %d ms", elapsed));
-//                }
-//            }
-//        };
-//    }
+    public RequestFilter buildTimingFilter(final Logger log)
+    {
+        return new RequestFilter()
+        {
+            public boolean service(Request request, Response response, RequestHandler handler)
+                    throws IOException
+            {
+                long startTime = System.currentTimeMillis();
+
+                try
+                {
+                    // The responsibility of a filter is to invoke the corresponding method
+                    // in the handler. When you chain multiple filters together, each filter
+                    // received a handler that is a bridge to the next filter.
+
+                    return handler.service(request, response);
+                } finally
+                {
+                    long elapsed = System.currentTimeMillis() - startTime;
+
+                    log.info(String.format("Request time: %d ms", elapsed));
+                }
+            }
+        };
+    }
 
     /**
      * This is a contribution to the RequestHandler service configuration. This is how we extend
@@ -111,14 +111,14 @@ public class AppModule
      * from the same module.  Without @Local, there would be an error due to the other service(s)
      * that implement RequestFilter (defined in other modules).
      */
-    //public void contributeRequestHandler(OrderedConfiguration<RequestFilter> configuration,
-    //                                     @Local
-    //                                     RequestFilter filter)
-    //{
+    public void contributeRequestHandler(OrderedConfiguration<RequestFilter> configuration,
+                                         @Local
+                                         RequestFilter filter)
+    {
         // Each contribution to an ordered configuration has a name, When necessary, you may
         // set constraints to precisely control the invocation order of the contributed filter
         // within the pipeline.
 
-        //configuration.add("Timing", filter);
-    //}
+        configuration.add("Timing", filter);
+    }
 }

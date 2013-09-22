@@ -1,13 +1,18 @@
 package com.zxuqian.bookstore.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import org.apache.tapestry5.beaneditor.NonVisual;
 
+@Entity
 public class Category {
 	
 	@NonVisual
@@ -15,8 +20,13 @@ public class Category {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	private String name;
+	private String description;
+	
+	@ManyToOne
 	private Category parent;
-	private List<Category> children;
+	
+	@OneToMany(mappedBy="parent")
+	private List<Category> children = new ArrayList<Category>();
 	
 	public Category() {
 	}
@@ -44,5 +54,12 @@ public class Category {
 	public void setChildren(List<Category> children) {
 		this.children = children;
 	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
 
 }

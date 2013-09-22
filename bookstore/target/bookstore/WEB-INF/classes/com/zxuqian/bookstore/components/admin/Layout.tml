@@ -245,6 +245,9 @@
     
     <!-- JavaScript Plugins -->
     <script src="${context:layout/admin/js/libs/jquery-1.8.3.min.js}"></script>
+    <script type="text/javascript">
+    	$.noConflict();
+    </script>
     <script src="${context:layout/admin/js/libs/jquery.mousewheel.min.js}"></script>
     <script src="${context:layout/admin/js/libs/jquery.placeholder.min.js}"></script>
     <script src="${context:layout/admin/custom-plugins/fileinput.js}"></script>
