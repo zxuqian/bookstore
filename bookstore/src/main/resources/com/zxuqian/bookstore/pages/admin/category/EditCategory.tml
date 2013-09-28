@@ -1,0 +1,54 @@
+<html t:type="admin/layout" title="修改类别"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+      xmlns:p="tapestry:parameter">
+
+	<div class="mws-panel grid_3">
+    	<div class="mws-panel-header">
+        	<span>修改类别</span>
+        </div>
+        <div class="mws-panel-body no-padding">
+        	<t:if test="success">
+        		<div class="mws-form-message success">
+	            	${msg}
+	            </div>
+        	</t:if>
+        	
+        	<t:if test="!success">
+        		<t:if test="msg">
+	            	<div class="mws-form-message error">
+		            	${msg}
+		            </div>
+	            </t:if>
+            </t:if>
+        	
+        	<t:form class="mws-form" context="category.id">
+        		<div class="mws-form-block"> 
+        			<div class="mws-form-row">
+        				<label class="mws-form-label">类别名称</label>
+        				<div class="mws-form-item">
+        					<t:textfield class="small" value="category.name" />
+        				</div>
+        			</div>
+        			<div class="mws-form-row">
+        				<label class="mws-form-label">描述</label>
+        				<div class="mws-form-item">
+        					<t:textarea rows="" cols="" class="large" value="category.description" ></t:textarea>
+        				</div>
+        			</div>
+        			<div class="mws-form-row">
+        				<label class="mws-form-label">父类别</label>
+        				<div class="mws-form-item">
+        					<t:select model="categories" value="parent" class="large">
+        					</t:select>
+        				</div>
+        			</div>
+        		</div>
+        		<div class="mws-button-row">
+        			<input type="submit" value="保存" class="btn btn-danger" />
+        			<t:pageLink page="admin/category/IndexCategory" class="btn">返回</t:pageLink>
+        		</div>
+        	</t:form>
+        </div>    	
+    </div>
+
+</html>

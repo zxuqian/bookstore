@@ -32,6 +32,44 @@
 		<link rel="stylesheet" type="text/css" href="${context:layout/admin/css/mws-theme.css}" media="screen"/>
 		<link rel="stylesheet" type="text/css" href="${context:layout/admin/css/themer.css}" media="screen"/>
         
+	    <!-- JavaScript Plugins -->
+	    <script src="${context:layout/admin/js/libs/jquery-1.8.3.min.js}"></script>
+	    <script type="text/javascript">
+	    	$.noConflict();
+	    </script>
+	    <script src="${context:layout/admin/js/libs/jquery.mousewheel.min.js}"></script>
+	    <script src="${context:layout/admin/js/libs/jquery.placeholder.min.js}"></script>
+	    <script src="${context:layout/admin/custom-plugins/fileinput.js}"></script>
+	    
+	    <!-- jQuery-UI Dependent Scripts -->
+	    <script src="${context:layout/admin/jui/js/jquery-ui-1.9.2.min.js}"></script>
+	    <script src="${context:layout/admin/jui/jquery-ui.custom.min.js}"></script>
+	    <script src="${context:layout/admin/jui/js/jquery.ui.touch-punch.js}"></script>
+	
+	    <!-- Plugin Scripts -->
+	    <script src="${context:layout/admin/plugins/datatables/jquery.dataTables.min.js}"></script>
+	    <!--[if lt IE 9]>
+	    <script src="js/libs/excanvas.min.js"></script>
+	    <![endif]-->
+	    <script src="${context:layout/admin/plugins/flot/jquery.flot.min.js}"></script>
+	    <script src="${context:layout/admin/plugins/flot/plugins/jquery.flot.tooltip.min.js}"></script>
+	    <script src="${context:layout/admin/plugins/flot/plugins/jquery.flot.pie.min.js}"></script>
+	    <script src="${context:layout/admin/plugins/flot/plugins/jquery.flot.stack.min.js}"></script>
+	    <script src="${context:layout/admin/plugins/flot/plugins/jquery.flot.resize.min.js}"></script>
+	    <script src="${context:layout/admin/plugins/colorpicker/colorpicker-min.js}"></script>
+	    <script src="${context:layout/admin/plugins/validate/jquery.validate-min.js}"></script>
+	    <script src="${context:layout/admin/custom-plugins/wizard/wizard.min.js}"></script>
+	
+	    <!-- Core Script -->
+	    <script src="${context:layout/admin/bootstrap/js/bootstrap.min.js}"></script>
+	    <script src="${context:layout/admin/js/core/mws.js}"></script>
+	
+	    <!-- Themer Script (Remove if not needed) -->
+	    <script src="${context:layout/admin/js/core/themer.js}"></script>
+	
+	    <!-- Demo Scripts (remove if not needed) -->
+	    <script src="${context:layout/admin/js/demo/demo.dashboard.js}"></script>
+        
         <title>${title}</title>
     </head>
     <body>
@@ -242,43 +280,6 @@
         <!-- Main Container End -->
         
     </div>
-    
-    <!-- JavaScript Plugins -->
-    <script src="${context:layout/admin/js/libs/jquery-1.8.3.min.js}"></script>
-    <script type="text/javascript">
-    	$.noConflict();
-    </script>
-    <script src="${context:layout/admin/js/libs/jquery.mousewheel.min.js}"></script>
-    <script src="${context:layout/admin/js/libs/jquery.placeholder.min.js}"></script>
-    <script src="${context:layout/admin/custom-plugins/fileinput.js}"></script>
-    
-    <!-- jQuery-UI Dependent Scripts -->
-    <script src="${context:layout/admin/jui/js/jquery-ui-1.9.2.min.js}"></script>
-    <script src="${context:layout/admin/jui/jquery-ui.custom.min.js}"></script>
-    <script src="${context:layout/admin/jui/js/jquery.ui.touch-punch.js}"></script>
 
-    <!-- Plugin Scripts -->
-    <script src="${context:layout/admin/plugins/datatables/jquery.dataTables.min.js}"></script>
-    <!--[if lt IE 9]>
-    <script src="js/libs/excanvas.min.js"></script>
-    <![endif]-->
-    <script src="${context:layout/admin/plugins/flot/jquery.flot.min.js}"></script>
-    <script src="${context:layout/admin/plugins/flot/plugins/jquery.flot.tooltip.min.js}"></script>
-    <script src="${context:layout/admin/plugins/flot/plugins/jquery.flot.pie.min.js}"></script>
-    <script src="${context:layout/admin/plugins/flot/plugins/jquery.flot.stack.min.js}"></script>
-    <script src="${context:layout/admin/plugins/flot/plugins/jquery.flot.resize.min.js}"></script>
-    <script src="${context:layout/admin/plugins/colorpicker/colorpicker-min.js}"></script>
-    <script src="${context:layout/admin/plugins/validate/jquery.validate-min.js}"></script>
-    <script src="${context:layout/admin/custom-plugins/wizard/wizard.min.js}"></script>
-
-    <!-- Core Script -->
-    <script src="${context:layout/admin/bootstrap/js/bootstrap.min.js}"></script>
-    <script src="${context:layout/admin/js/core/mws.js}"></script>
-
-    <!-- Themer Script (Remove if not needed) -->
-    <script src="${context:layout/admin/js/core/themer.js}"></script>
-
-    <!-- Demo Scripts (remove if not needed) -->
-    <script src="${context:layout/admin/js/demo/demo.dashboard.js}"></script>
 </body>
 </html>
