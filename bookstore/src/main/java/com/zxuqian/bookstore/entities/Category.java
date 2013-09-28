@@ -1,5 +1,6 @@
 package com.zxuqian.bookstore.entities;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +14,12 @@ import javax.persistence.OneToMany;
 import org.apache.tapestry5.beaneditor.NonVisual;
 
 @Entity
-public class Category {
+public class Category implements Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6266348782458593354L;
 	
 	@NonVisual
 	@Id
@@ -60,6 +66,10 @@ public class Category {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
+	@Override
+	public String toString() {
+		return "Category [id=" + id + ", name=" + name + ", description="
+				+ description + "]";
+	}
 
 }

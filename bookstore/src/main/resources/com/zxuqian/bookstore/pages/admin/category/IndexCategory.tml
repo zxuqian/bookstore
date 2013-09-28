@@ -26,13 +26,13 @@
         			<div class="mws-form-row">
         				<label class="mws-form-label">类别名称</label>
         				<div class="mws-form-item">
-        					<t:textfield class="small" value="category.name" />
+        					<t:textfield class="small" value="category?.name" />
         				</div>
         			</div>
         			<div class="mws-form-row">
         				<label class="mws-form-label">描述</label>
         				<div class="mws-form-item">
-        					<t:textarea rows="" cols="" class="large" value="category.description" ></t:textarea>
+        					<t:textarea rows="" cols="" class="large" value="category?.description" ></t:textarea>
         				</div>
         			</div>
         			<div class="mws-form-row">
@@ -53,94 +53,31 @@
     
     <div class="mws-panel grid_5">
     	<div class="mws-panel-header">
-        	<span><i class="icon-table"></i> Simple Table</span>
+        	<span><i class="icon-table"></i> 类别管理</span>
         </div>
         <div class="mws-panel-body no-padding">
             <table class="mws-table">
                 <thead>
                     <tr>
-                        <th>Rendering engine</th>
-                        <th>Browser</th>
-                        <th>Platform(s)</th>
-                        <th>Engine version</th>
-                        <th>CSS grade</th>
+                        <th>序号</th>
+                        <th>类别名</th>
+                        <th>描述</th>
+                        <th>操作</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Trident</td>
-                        <td>Internet
-                             Explorer 4.0</td>
-                        <td>Win 95+</td>
-                        <td>4</td>
-                        <td>X</td>
-                    </tr>
-                    <tr>
-                        <td>Trident</td>
-                        <td>Internet
-                             Explorer 5.0</td>
-                        <td>Win 95+</td>
-                        <td>5</td>
-                        <td>C</td>
-                    </tr>
-                    <tr>
-                        <td>Trident</td>
-                        <td>Internet
-                             Explorer 5.5</td>
-                        <td>Win 95+</td>
-                        <td>5.5</td>
-                        <td>A</td>
-                    </tr>
-                    <tr>
-                        <td>Trident</td>
-                        <td>Internet
-                             Explorer 6</td>
-                        <td>Win 98+</td>
-                        <td>6</td>
-                        <td>A</td>
-                    </tr>
-                    <tr>
-                        <td>Trident</td>
-                        <td>Internet Explorer 7</td>
-                        <td>Win XP SP2+</td>
-                        <td>7</td>
-                        <td>A</td>
-                    </tr>
-                    <tr>
-                        <td>Trident</td>
-                        <td>AOL browser (AOL desktop)</td>
-                        <td>Win XP</td>
-                        <td>6</td>
-                        <td>A</td>
-                    </tr>
-                    <tr>
-                        <td>Gecko</td>
-                        <td>Firefox 1.0</td>
-                        <td>Win 98+ / OSX.2+</td>
-                        <td>1.7</td>
-                        <td>A</td>
-                    </tr>
-                    <tr>
-                        <td>Gecko</td>
-                        <td>Firefox 1.5</td>
-                        <td>Win 98+ / OSX.2+</td>
-                        <td>1.8</td>
-                        <td>A</td>
-                    </tr>
-                    <tr>
-                        <td>Gecko</td>
-                        <td>Camino 1.5</td>
-                        <td>OSX.3+</td>
-                        <td>1.8</td>
-                        <td>A</td>
-                    </tr>
-                    <tr>
-                        <td>Gecko</td>
-                        <td>Netscape 7.2</td>
-                        <td>Win 95+ / Mac OS 8.6-9.2</td>
-                        <td>1.7</td>
-                        <td>A</td>
-                    </tr>
+                	<t:loop source="categoriesForManagement" value="category">
+                    	<tr>
+	                        <td>${tableIndex}</td>
+	                        <td>${category.name}</td>
+	                        <td>${category.description}</td>
+	                        <td>
+	                        	<t:pageLink t:page="admin/category/EditCategory" t:context="category.id" ><i class="icol32-table-edit" title="编辑"></i></t:pageLink>
+	            				<t:actionLink t:id="delete" t:context="category.id"><i class="icol32-table-delete" title="删除"></i></t:actionLink>
+	                        </td>
+	                    </tr>
+                    </t:loop>
+                    
                 </tbody>
             </table>
         </div>

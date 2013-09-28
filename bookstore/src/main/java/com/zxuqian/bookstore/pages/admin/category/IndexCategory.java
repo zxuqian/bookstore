@@ -40,11 +40,15 @@ public class IndexCategory {
 	@Inject
 	private SelectModelFactory selectModelFactory;
 	
+	private int tableIndex = 1;
+	
 	/**
 	 * 初始化category对象，render和submit之前
 	 */
 	public void onPrepare() {
-		this.category = new Category();
+		if(this.category == null) {
+			this.category = new Category();
+		}
 		logger.debug("is category realy null?" + this.category);
 	}
 	
@@ -77,9 +81,27 @@ public class IndexCategory {
 	public SelectModel getCategories() {
 		
 		List<Category> treeCategory = new ArrayList<Category>();
-		this.categoryService.getTreeCategories(treeCategory, this.categoryService.getCategories(), "");
+		
+		this.categoryService.getTreeCategories(treeCategory, this.categoryService.getReadOnlyCategories(), "");
 		
 		return this.selectModelFactory.create(treeCategory, "name");
+	}
+	
+	/**
+	 * 为类别列表组装类别
+	 * @return
+	 */
+	public List<Category> getCategoriesForManagement() {
+		List<Category> treeCategory = new ArrayList<Category>();
+		
+		this.categoryService.getTreeCategories(treeCategory, this.categoryService.getReadOnlyCategories(), "");
+		
+		return treeCategory;
+		
+	}
+	
+	public int getTableIndex() {
+		return tableIndex++;
 	}
 
 }

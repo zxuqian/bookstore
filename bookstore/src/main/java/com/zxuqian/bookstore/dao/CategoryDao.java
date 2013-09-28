@@ -16,5 +16,8 @@ public interface CategoryDao {
 	
 	@CommitAfter
 	List<Category> getCategories();
+	
+	@CommitAfter
+	List<Category> getReadOnlyCategories();
 
 }

@@ -1,6 +1,5 @@
 package com.zxuqian.bookstore.services;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -29,6 +28,10 @@ public class CategoryService {
 	
 	public List<Category> getCategories() {
 		return this.categoryDao.getCategories();
+	}
+	
+	public List<Category> getReadOnlyCategories() {
+		return this.categoryDao.getReadOnlyCategories();
 	}
 	
 	public void getTreeCategories(List<Category> result, List<Category> categories, String level) {
