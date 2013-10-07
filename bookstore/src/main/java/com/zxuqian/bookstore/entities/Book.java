@@ -2,6 +2,8 @@ package com.zxuqian.bookstore.entities;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,6 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 import org.apache.tapestry5.beaneditor.NonVisual;
+import org.hibernate.annotations.Type;
 
 @Entity
 public class Book {
@@ -22,13 +25,15 @@ public class Book {
 	@ManyToOne
 	private Category category;
 	private Double price;
-	@OneToOne
+	@OneToOne(mappedBy = "book", cascade = CascadeType.ALL)
 	private Inventory inventory;
 	private String isbn;
 	private String author;
 	private String press;
 	private Date publishDate;
 	private String overview;
+	
+	@Type(type = "text")
 	private String description;
 	
 	private Date addedDate = new Date();

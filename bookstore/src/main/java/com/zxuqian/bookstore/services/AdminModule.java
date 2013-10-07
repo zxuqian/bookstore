@@ -18,10 +18,12 @@ import org.slf4j.Logger;
 import com.zxuqian.bookstore.components.admin.LayoutStack;
 import com.zxuqian.bookstore.dao.BookDao;
 import com.zxuqian.bookstore.dao.CategoryDao;
+import com.zxuqian.bookstore.dao.InventoryDao;
 import com.zxuqian.bookstore.dao.MenuDao;
 import com.zxuqian.bookstore.dao.UserDao;
 import com.zxuqian.bookstore.dao.impl.BookDaoImpl;
 import com.zxuqian.bookstore.dao.impl.CategoryDaoImpl;
+import com.zxuqian.bookstore.dao.impl.InventoryDaoImpl;
 import com.zxuqian.bookstore.dao.impl.MenuDaoImpl;
 import com.zxuqian.bookstore.dao.impl.UserDaoImpl;
 import com.zxuqian.bookstore.pages.admin.book.BookStack;
@@ -46,6 +48,9 @@ public class AdminModule
     	
     	binder.bind(BookDao.class, BookDaoImpl.class);
     	binder.bind(BookService.class);
+    	
+    	binder.bind(InventoryDao.class, InventoryDaoImpl.class);
+    	binder.bind(InventoryService.class);
     	
     }
     

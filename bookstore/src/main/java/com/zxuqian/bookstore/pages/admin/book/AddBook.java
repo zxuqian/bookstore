@@ -27,11 +27,11 @@ import com.zxuqian.bookstore.entities.Category;
 import com.zxuqian.bookstore.entities.Inventory;
 import com.zxuqian.bookstore.services.BookService;
 import com.zxuqian.bookstore.services.CategoryService;
+import com.zxuqian.bookstore.services.InventoryService;
+import com.zxuqian.bookstore.util.SiteConstants;
 
 @Import(library = "context:admin/book.js")
 public class AddBook {
-	
-	private static final String UPLOAD_FOLDER = "bookstore_upload";
 	
 	@Inject
 	@Path("context:layout/admin/js/demo/demo.formelements.js")
@@ -88,6 +88,12 @@ public class AddBook {
 	@Inject
 	private BookService bookService;
 	
+	/**
+	 * inventoryService
+	 */
+	@Inject
+	private InventoryService inventoryService;
+	
 	@AfterRender
 	void afterRender() {
 		javascriptSupport.importStack("bookStack");
@@ -108,7 +114,7 @@ public class AddBook {
 		this.book.setInventory(this.inventory);
 		this.book.setAttachment(copied.getName());
 		
-		System.out.println(book);
+		inventoryService.addInventory(inventory);
 		bookService.addBook(book);
 	}
 	
@@ -140,7 +146,7 @@ public class AddBook {
 		String extName = this.file.getFileName().substring(this.file.getFileName().lastIndexOf("."));
 		
 		String applicationPath = applicationGlobals.getServletContext().getRealPath("/");
-		File upload = new File(new File(applicationPath).getParentFile().getPath() + "/" + UPLOAD_FOLDER);
+		File upload = new File(new File(applicationPath).getParentFile().getPath() + "/" + SiteConstants.UPLOAD_FOLDER);
 		if(!upload.exists()) {
 			upload.mkdir();
 		}

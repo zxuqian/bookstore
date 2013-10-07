@@ -1,11 +1,15 @@
 package com.zxuqian.bookstore.entities;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 import org.apache.tapestry5.beaneditor.NonVisual;
+import org.hibernate.annotations.Formula;
 
 @Entity
 public class Inventory {
@@ -15,7 +19,10 @@ public class Inventory {
 	private Long id;
 	private Integer quantity;
 	private Integer sold;
+	@Formula("quantity - sold")
 	private Integer remains;
+	@OneToOne
+	private Book book;
 	public Long getId() {
 		return id;
 	}
@@ -39,6 +46,13 @@ public class Inventory {
 	}
 	public void setRemains(Integer remains) {
 		this.remains = remains;
+	}
+	
+	public Book getBook() {
+		return book;
+	}
+	public void setBook(Book book) {
+		this.book = book;
 	}
 	@Override
 	public String toString() {
