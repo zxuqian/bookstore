@@ -11,6 +11,7 @@
             <th>菜单名称</th>
             <th>路径</th>
             <th>图标</th>
+            <th>顺序</th>
             <th>操作</th>
         </tr>
 	</p:thead>
@@ -20,6 +21,7 @@
             <td>${menu.menuName}</td>
             <td>${menu.url}</td>
             <td>${menu.icon}</td>
+            <td>${menu.order}</td>
             <td align="center">
             	<t:pageLink t:context="menu.id" t:page="admin/system/EditMenu"><i class="icol32-table-edit" title="编辑"></i></t:pageLink>
             	<t:actionLink t:id="deleteParent" t:context="menu.id"><i class="icol32-table-delete" title="删除"></i></t:actionLink>
@@ -29,6 +31,7 @@
 	            <td>&nbsp;&nbsp;－－${menu.menuName}</td>
 	            <td>${menu.url}</td>
 	            <td>${menu.icon}</td>
+	            <td>${menu.order}</td>
 	            <td  align="center">
 	            	<t:pageLink t:context="menu.id" t:page="admin/system/EditMenu"><i class="icol32-table-edit" title="编辑"></i></t:pageLink>
 	            	<t:actionLink t:id="deleteChild" t:context="menu.id"><i class="icol32-table-delete" title="删除"></i></t:actionLink>

@@ -10,7 +10,6 @@
 ;(function( $, window, document, undefined ) {
 
     $(document).ready(function() {
-
         // PickList
         $.fn.pickList && $('#pickList').pickList();
 

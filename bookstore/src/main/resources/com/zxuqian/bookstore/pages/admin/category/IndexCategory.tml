@@ -1,7 +1,6 @@
 <html t:type="admin/layout" title="类别管理"
       xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
       xmlns:p="tapestry:parameter">
-
 	<div class="mws-panel grid_3">
     	<div class="mws-panel-header">
         	<span>添加类别</span>
@@ -13,20 +12,21 @@
 	            </div>
         	</t:if>
         	
-        	<t:if test="!success">
-        		<t:if test="msg">
-	            	<div class="mws-form-message error">
-		            	${msg}
-		            </div>
-	            </t:if>
-            </t:if>
         	
-        	<t:form class="mws-form">
+        	<t:form class="mws-form" t:id="form">
+        		<t:if test="!success">
+	        		<t:if test="msg">
+		            	<div class="mws-form-message error">
+			            	<p>${msg}</p>
+			            </div>
+		            </t:if>
+	            </t:if>
+	            <div t:type="admin/myerrors" t:class="literal:mws-form-message error"/>
         		<div class="mws-form-block"> 
         			<div class="mws-form-row">
         				<label class="mws-form-label">类别名称</label>
         				<div class="mws-form-item">
-        					<t:textfield class="small" value="category?.name" />
+        					<t:textfield t:id="categoryName" class="small" value="category?.name" validate="required"/>
         				</div>
         			</div>
         			<div class="mws-form-row">
@@ -56,7 +56,7 @@
         	<span><i class="icon-table"></i> 类别管理</span>
         </div>
         <div class="mws-panel-body no-padding">
-            <table class="mws-table">
+            <table class="mws-table" id="categoryTable">
                 <thead>
                     <tr>
                         <th>序号</th>
@@ -65,22 +65,36 @@
                         <th>操作</th>
                     </tr>
                 </thead>
-                <tbody>
-                	<t:loop source="categoriesForManagement" value="category">
-                    	<tr>
+                <t:zone t:id="rowZone" id="categoryZone" elementName="tbody" t:update="slidedown">
+                	<t:loop t:id="loopCategory" source="categoriesForManagement" value="category">
+                		<tr>
 	                        <td>${tableIndex}</td>
-	                        <td>${category.name}</td>
+	                        <td>
+               					<t:if test="isExpandOrIsLeaf">
+	                					<span class="ui-icon ui-icon-minus" style="display:inline-block"></span>
+	                				<p:else>
+	                					<span class="ui-icon ui-icon-plus" style="display:inline-block"></span>
+	                				</p:else>
+	                			</t:if>
+	                			<t:eventlink onclick="javascript:return showMask(this);" event="expand" zone="^" class="expand" context="category">
+	                        		${category.treeName}
+	                        		<img class="loading" src="${context:admin/images/ajax-loader.gif}" style="display:none"></img>
+	                        	</t:eventlink>
+	                        </td>
 	                        <td>${category.description}</td>
 	                        <td>
 	                        	<t:pageLink t:page="admin/category/EditCategory" t:context="category.id" ><i class="icol32-table-edit" title="编辑"></i></t:pageLink>
-	            				<t:actionLink t:id="delete" t:context="category.id"><i id="deleteCategory" class="icol32-table-delete" title="删除"></i></t:actionLink>
+	            				<t:actionLink t:id="delete" t:context="category.id" class="deleteCategory"><i class="icol32-table-delete" title="删除"></i></t:actionLink>
 	                        </td>
-	                    </tr>
+                    	</tr>
                     </t:loop>
-                    
-                </tbody>
+                </t:zone>
             </table>
         </div>
-    </div>    
-
+    </div>
+    <div id="delete-category-dialog">
+		<div class="mws-dialog-inner">
+    		<p>真的要删除此类别吗？</p>
+        </div>
+    </div>
 </html>

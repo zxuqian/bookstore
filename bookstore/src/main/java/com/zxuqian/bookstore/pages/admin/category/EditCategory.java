@@ -17,11 +17,11 @@ import com.zxuqian.bookstore.services.CategoryService;
 public class EditCategory{
 	
 	@Property
-	@Persist(PersistenceConstants.CLIENT)
+	@Persist(PersistenceConstants.FLASH)
 	private Category category;
 	
 	@Property
-	@Persist(PersistenceConstants.CLIENT)
+	@Persist(PersistenceConstants.FLASH)
 	private Category parent;
 	
 	@Inject

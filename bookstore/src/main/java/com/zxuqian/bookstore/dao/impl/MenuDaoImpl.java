@@ -21,7 +21,7 @@ public class MenuDaoImpl implements MenuDao {
 	}
 
 	public List<Menu> getParentMenus() {
-		return session.createQuery("from Menu m where m.parent.id=null").list();
+		return session.createQuery("from Menu m where m.parent.id=null order by menu_order").list();
 	}
 
 }

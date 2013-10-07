@@ -3,7 +3,6 @@ package com.zxuqian.bookstore.pages.admin;
 import javax.inject.Inject;
 
 import org.apache.tapestry5.annotations.Property;
-import org.seleniumhq.jetty7.security.PropertyUserStore.UserListener;
 
 import com.zxuqian.bookstore.entities.User;
 import com.zxuqian.bookstore.services.UserService;

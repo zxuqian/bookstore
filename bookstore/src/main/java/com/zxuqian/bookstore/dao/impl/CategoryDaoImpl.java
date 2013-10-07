@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.hibernate.FlushMode;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 
@@ -12,6 +13,7 @@ import com.zxuqian.bookstore.entities.Category;
 import com.zxuqian.bookstore.util.DaoException;
 
 public class CategoryDaoImpl implements CategoryDao {
+	
 	@Inject
 	private Session session;
 	
@@ -37,9 +39,17 @@ public class CategoryDaoImpl implements CategoryDao {
 	 * 为生成类别树用，先清空session缓存，否则会产生数据库更改问题
 	 */
 	public List<Category> getReadOnlyCategories() {
-		this.session.clear();
-		List<Category> categories = this.session.createQuery("from Category c where c.parent=null").setReadOnly(true).list();
+		List<Category> categories = this.session.createQuery("from Category c where c.parent=null").setFlushMode(FlushMode.MANUAL).list();
 		return categories;
+	}
+
+	public void delete(Category category) {
+		this.session.delete(category);
+		
+	}
+
+	public void delete(Long categoryId) {
+		this.session.delete(this.getCategoryById(categoryId));
 	}
 
 }

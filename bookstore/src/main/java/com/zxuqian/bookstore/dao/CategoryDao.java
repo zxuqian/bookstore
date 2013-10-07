@@ -19,5 +19,11 @@ public interface CategoryDao {
 	
 	@CommitAfter
 	List<Category> getReadOnlyCategories();
+	
+	@CommitAfter
+	void delete(Category category);
+	
+	@CommitAfter
+	void delete(Long categoryId);
 
 }

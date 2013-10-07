@@ -2,8 +2,7 @@ package com.zxuqian.bookstore.services;
 
 import java.io.IOException;
 
-import org.apache.tapestry5.*;
-import org.apache.tapestry5.internal.hibernate.HibernateEntityValueEncoder;
+import org.apache.tapestry5.SymbolConstants;
 import org.apache.tapestry5.ioc.MappedConfiguration;
 import org.apache.tapestry5.ioc.OrderedConfiguration;
 import org.apache.tapestry5.ioc.ServiceBinder;
@@ -13,12 +12,8 @@ import org.apache.tapestry5.services.Request;
 import org.apache.tapestry5.services.RequestFilter;
 import org.apache.tapestry5.services.RequestHandler;
 import org.apache.tapestry5.services.Response;
+import org.got5.tapestry5.jquery.JQuerySymbolConstants;
 import org.slf4j.Logger;
-
-import com.zxuqian.bookstore.dao.MenuDao;
-import com.zxuqian.bookstore.dao.UserDao;
-import com.zxuqian.bookstore.dao.impl.MenuDaoImpl;
-import com.zxuqian.bookstore.dao.impl.UserDaoImpl;
 
 /**
  * This module is automatically included as part of the Tapestry IoC Registry, it's a good place to
@@ -57,6 +52,11 @@ public class AppModule
         // you can extend this list of locales (it's a comma separated series of locale names;
         // the first locale name is the default when there's no reasonable match).
         configuration.add(SymbolConstants.SUPPORTED_LOCALES, "en");
+        //configuration.add(JQuerySymbolConstants.JQUERY_CORE_PATH, "com/zxuqian/bookstore/js");
+        //configuration.add(JQuerySymbolConstants.JQUERY_VERSION, "1.8.3");
+        
+        //configuration.add(JQuerySymbolConstants.JQUERY_UI_PATH, "com/zxuqian/bookstore/js/jui/js");
+        configuration.add(JQuerySymbolConstants.JQUERY_UI_DEFAULT_THEME, "com/zxuqian/bookstore/js/jui/jquery-ui.custom.css");
     }
 
 

@@ -34,18 +34,37 @@ public class CategoryService {
 		return this.categoryDao.getReadOnlyCategories();
 	}
 	
+	/**
+	 * 获取类别树
+	 * @param result
+	 * @param categories
+	 * @param level
+	 */
 	public void getTreeCategories(List<Category> result, List<Category> categories, String level) {
 		
 		for(Category category : categories) {
+			Category copyCategory = null;
+			try {
+				copyCategory = (Category)category.clone();
+			} catch (CloneNotSupportedException e) {
+				e.printStackTrace();
+			}
+			copyCategory.setName(level + category.getName());
 			
-			category.setName(level + category.getName());
-			
-			result.add(category);
+			result.add(copyCategory);
 			
 			if (category.getChildren().size() > 0) {
 				getTreeCategories(result, category.getChildren(), "― " + level);
 			}
 		}
+	}
+	
+	public void delete(Category category) {
+		this.categoryDao.delete(category);
+	}
+	
+	public void delete(Long categoryId) {
+		this.categoryDao.delete(categoryId);
 	}
 
 }

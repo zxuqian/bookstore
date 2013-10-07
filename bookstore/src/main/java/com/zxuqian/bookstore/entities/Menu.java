@@ -2,6 +2,7 @@ package com.zxuqian.bookstore.entities;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,6 +22,9 @@ public class Menu {
 	private String menuName;
 	private String url;
 	private String icon;
+	
+	@Column(name = "menu_order")
+	private int order;
 	
 	@ManyToOne
 	private Menu parent;
@@ -66,6 +70,13 @@ public class Menu {
 	public void setChildren(List<Menu> children) {
 		this.children = children;
 	}
+	public int getOrder() {
+		return order;
+	}
+	public void setOrder(int order) {
+		this.order = order;
+	}
+	
 	
 //	public String toString() {
 //		return this.getMenuName();

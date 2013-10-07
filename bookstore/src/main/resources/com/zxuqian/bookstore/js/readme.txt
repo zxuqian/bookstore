@@ -1,0 +1,1 @@
+This folder only jui/jquery-ui.custom.css used for contribute to the path of jQuery UI default theme.

@@ -23,8 +23,8 @@
 	// the plugin prototype
 	FileInput.prototype = {
 		defaults: {
-			placeholder: 'No file selected...', 
-			buttontext: 'Browse...'
+			placeholder: '没有选择文件', 
+			buttontext: '浏览...'
 		}, 
 
 		_init: function( element, options ) {
@@ -49,7 +49,8 @@
 			} )
 			.on( 'change.fileupload', $.proxy( this._change, this) );
 
-			this.container = $( '<div class="fileinput-holder" style="position: relative;"></div>' )
+			//Modified by Xuqian, adjusted size
+			this.container = $( '<div class="fileinput-holder small" style="position: relative;"></div>' )
 				.append( $( '<input type="text" class="fileinput-preview" style="width: 100%;" readonly="readonly" />' )
 					.attr('placeholder', this.options.placeholder ) 
 				)
