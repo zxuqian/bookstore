@@ -28,7 +28,9 @@
 						</header>
 						
 						<address>
-							您还未设置收货地址
+							<t:if test="!user.address">
+								您还未设置收货地址
+							</t:if>
 						</address>
 					</div>
 				</div>
