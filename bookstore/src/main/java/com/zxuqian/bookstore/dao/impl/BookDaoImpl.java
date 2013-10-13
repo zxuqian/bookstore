@@ -15,8 +15,8 @@ public class BookDaoImpl implements BookDao {
 	@Inject
 	private Session session;
 	
-	public void addBook(Book book) {
-		session.save(book);
+	public void saveOrUpdate(Book book) {
+		session.saveOrUpdate(book);
 	}
 
 	public List<Book> getAllBooks() {
@@ -26,6 +26,19 @@ public class BookDaoImpl implements BookDao {
 	public List<Book> getBooksByPage(int page, int max) {
 		return this.session.createQuery("from Book").setFirstResult(page)
 				.setMaxResults(max).list();
+	}
+
+	public Book getBookById(Long id) {
+		return (Book)this.session.get(Book.class, id);
+	}
+
+	public void deleteBook(Book book) {
+		this.session.delete(book);
+	}
+
+	public List<Book> getCarouselBooks() {
+		return this.session.createQuery("from Book b where b.featured = true")
+				.list();
 	}
 
 }

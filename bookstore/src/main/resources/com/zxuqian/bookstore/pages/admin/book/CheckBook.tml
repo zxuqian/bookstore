@@ -1,0 +1,15 @@
+<html t:type="admin/layout" title="图书详细信息"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+      xmlns:p="tapestry:parameter">
+        <!-- Most of the page content, including <head>, <body>, etc. tags, comes from Layout.tml -->
+    	<!-- Statistics Button Container -->
+<div class="mws-panel grid_8">
+	<div class="mws-panel-header">
+    	<span><i class="icon-table"></i> 图书详细信息</span>
+    </div>
+    <div class="mws-panel-body no-padding">
+        
+    </div>
+</div>
+
+</html>

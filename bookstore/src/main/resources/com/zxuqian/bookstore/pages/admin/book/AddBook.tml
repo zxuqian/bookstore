@@ -1,10 +1,10 @@
-<html t:type="admin/layout" title="图书管理"
+<html t:type="admin/layout" title="添加图书"
       xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
       xmlns:p="tapestry:parameter">
 
 <div class="mws-panel grid_8">
    	<div class="mws-panel-header">
-       	<span>Inline Form</span>
+       	<span>添加图书</span>
        </div>
        <div class="mws-panel-body no-padding">
        	<t:form class="mws-form" t:id="bookForm">
@@ -32,6 +32,23 @@
        				</div>
        			</div>
        			
+       			<div class="mws-form-row">
+       				<label class="mws-form-label">首页轮播</label>
+       				<div class="mws-form-item">
+       					<t:radioGroup value="book.featured">
+       					<ul class="mws-form-list">
+       						<li>
+       							<t:radio t:id="yesf" value="literal:true" />
+       							<t:label for="yesf">是</t:label>
+       						</li>
+       						<li>
+       							<t:radio t:id="nof" value="literal:false" />
+       							<t:label for="nof">否</t:label>
+       						</li>
+       					</ul>
+       					</t:radioGroup>
+       				</div>
+       			</div>
        			
        			<div class="mws-form-row">
        				<label class="mws-form-label">价格：</label>

@@ -32,6 +32,7 @@ public class Book {
 	private String press;
 	private Date publishDate;
 	private String overview;
+	private boolean featured;
 	
 	@Type(type = "text")
 	private String description;
@@ -146,6 +147,14 @@ public class Book {
 
 	public void setAttachment(String attachment) {
 		this.attachment = attachment;
+	}
+	
+	public boolean isFeatured() {
+		return featured;
+	}
+
+	public void setFeatured(boolean featured) {
+		this.featured = featured;
 	}
 
 	@Override

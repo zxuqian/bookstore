@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
 
 @Entity
 public class User {
@@ -15,6 +16,8 @@ public class User {
 	
 	private String username;
 	private String password;
+	@Transient
+	private String rePassword;
 	
 	private String name;
 	private String sex;
@@ -49,6 +52,14 @@ public class User {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getRePassword() {
+		return rePassword;
+	}
+
+	public void setRePassword(String rePassword) {
+		this.rePassword = rePassword;
 	}
 
 	public String getName() {

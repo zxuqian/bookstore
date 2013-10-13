@@ -108,14 +108,15 @@ public class AddBook {
 	
 	void onSuccessFromBookForm() {
 		File copied = this.getFileUploadFile();
-		file.write(copied);
+		if(!(copied == null)) {
+			file.write(copied);
+			this.book.setAttachment(copied.getName());
+		}
 		
 		this.book.setCategory(this.category);
-		this.book.setInventory(this.inventory);
-		this.book.setAttachment(copied.getName());
-		
+		bookService.saveOrUpdate(book);
+		this.inventory.setBook(this.book);
 		inventoryService.addInventory(inventory);
-		bookService.addBook(book);
 	}
 	
 	void onUploadException(FileUploadException ex) {
@@ -139,6 +140,9 @@ public class AddBook {
 	 * @return 保存的上传文件路径
 	 */
 	public File getFileUploadFile() {
+		if(this.file == null || this.file.getFileName().equals("")) {
+			return null;
+		}
 		//获取随机生成的文件名
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
 		String date = sdf.format(new Date());

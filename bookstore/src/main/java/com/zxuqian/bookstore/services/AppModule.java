@@ -15,11 +15,14 @@ import org.apache.tapestry5.services.Response;
 import org.got5.tapestry5.jquery.JQuerySymbolConstants;
 import org.slf4j.Logger;
 
+import com.zxuqian.bookstore.dao.UserDao;
+import com.zxuqian.bookstore.dao.impl.UserDaoImpl;
+
 /**
  * This module is automatically included as part of the Tapestry IoC Registry, it's a good place to
  * configure and extend Tapestry, or to place your own service definitions.
  */
-@SubModule(value={AdminModule.class})
+@SubModule(value={AdminModule.class, FrontEndModule.class})
 public class AppModule
 {
     public static void bind(ServiceBinder binder)
@@ -29,6 +32,8 @@ public class AppModule
         // Use service builder methods (example below) when the implementation
         // is provided inline, or requires more initialization than simply
         // invoking the constructor.
+    	binder.bind(UserDao.class, UserDaoImpl.class);
+    	binder.bind(UserService.class);
     }
 
     public static void contributeFactoryDefaults(

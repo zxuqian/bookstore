@@ -8,10 +8,22 @@
     	<span><i class="icon-table"></i> 图书管理</span>
     </div>
     <div class="mws-panel-body no-padding">
-        <table t:type="jquery/datatable" t:id="bookmanagement" 
-        	t:source="books" t:row="book"
-        	t:rowsPerPage="1" t:include="name, author, isbn, price">
+        <table t:type="jquery/datatable" t:id="bookmanagement" t:options="options"
+        	t:source="books" t:row="book" t:mode="true" t:model="model"
+        	t:rowsPerPage="10" t:include="name, author, isbn, price" t:add="actions">
+        	
+        	<p:actionsCell>
+        		<t:pageLink t:page="admin/book/CheckBook" t:context="book.id"><i class="icol32-zoom" title="详细信息"></i></t:pageLink>
+        		<t:pageLink t:page="admin/book/EditBook" t:context="book.id" ><i class="icol32-table-edit" title="编辑"></i></t:pageLink>
+	            <t:actionLink t:id="delete" t:context="book.id" class="deleteBook"><i class="icol32-table-delete" title="删除"></i></t:actionLink>
+        	</p:actionsCell>
         </table>
+    </div>
+</div>
+
+<div id="delete-book-dialog">
+	<div class="mws-dialog-inner">
+  		<p>真的要删除本书吗？</p>
     </div>
 </div>
 

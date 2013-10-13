@@ -1,0 +1,79 @@
+<html t:type="layout" title="我的账户"
+	xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+	xmlns:p="tapestry:parameter">
+
+<section id="content-holder" class="container-fluid container">
+    <div class="row-fluid no-sidebar">
+	  <div class=' cp-page-float-left'>
+	    <div class='span12 page-item'>
+		  <section class="span12 wrapper">
+		    <div class="heading-bar">
+			  <h2>我的账户</h2>
+			  <span class="h-line"></span>
+			</div>
+			<div class="cp-page-wrapper">
+			  <div class="cp-page-content">
+			    <div class="woocommerce">
+				  <p class="myaccount_user">
+		                                 您好, <strong>${user.username}</strong>. 从您的账户面板您可看到最近订单, 管理您的收货地址并且 <a href="http://dummy.crunchpress.com/book-store/shortcodes/my-account/change-password/">更改密码</a>.</p>
+					
+				  <h2>我的地址</h2>
+				  <p class="myaccount_address">
+				  	以下地址将作为您的默认收货地址</p>
+				  <div class="col2-set addresses">
+					<div class="col-1 address">
+						<header class="title">
+							<h3>收货地址</h3>
+							<a href="http://dummy.crunchpress.com/book-store/shortcodes/my-account/edit-address/?address=billing" class="edit">编辑</a>
+						</header>
+						
+						<address>
+							您还未设置收货地址
+						</address>
+					</div>
+				</div>
+
+				  <h2>最近订单</h2>
+
+					<table class="shop_table my_account_orders">
+				
+						<thead>
+							<tr>
+								<th class="order-number"><span class="nobr">订单</span></th>
+								<th class="order-date"><span class="nobr">日期</span></th>
+								<th class="order-status"><span class="nobr">状态</span></th>
+								<th class="order-total"><span class="nobr">总计</span></th>
+								<th class="order-actions">&nbsp;</th>
+							</tr>
+						</thead>
+				
+						<tbody>
+						  <tr class="order">
+							<td class="order-number">
+								<a href="http://dummy.crunchpress.com/book-store/shortcodes/my-account/view-order/?order=3241">
+									#3241						</a>
+							</td>
+							<td class="order-date">
+								<time datetime="2013-10-13" title="1381652665">2013年10月13日</time>
+							</td>
+							<td class="order-status" style="text-align:left; white-space:nowrap;">
+								未配送
+							</td>
+							<td>
+								￥338.54
+							</td>
+						  </tr>
+						 </tbody>
+					  </table>
+				</div>
+			  </div>
+		    </div>
+		  <div class="clear">
+		</div>
+	  </section>
+	</div>
+  </div>        
+</div>
+</section>
+
+</html>

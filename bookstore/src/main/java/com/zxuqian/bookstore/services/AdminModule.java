@@ -36,8 +36,6 @@ public class AdminModule
 {
     public static void bind(ServiceBinder binder)
     {
-    	binder.bind(UserDao.class, UserDaoImpl.class);
-    	binder.bind(UserService.class);
     	
     	binder.bind(MenuDao.class, MenuDaoImpl.class);
     	binder.bind(MenuService.class);

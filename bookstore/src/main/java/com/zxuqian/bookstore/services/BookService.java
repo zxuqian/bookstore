@@ -12,8 +12,8 @@ public class BookService {
 	@Inject
 	private BookDao bookDao;
 
-	public void addBook(Book book) {
-		bookDao.addBook(book);
+	public void saveOrUpdate(Book book) {
+		bookDao.saveOrUpdate(book);
 	}
 	
 	public List<Book> getAllBooks() {
@@ -24,4 +24,19 @@ public class BookService {
 		return this.bookDao.getBooksByPage(page, max);
 	}
 	
+	public Book getBookById(Long id) {
+		return this.bookDao.getBookById(id);
+	}
+	
+	public void deleteBook(Book book) {
+		this.bookDao.deleteBook(book);
+	}
+	
+	public void deleteBook(Long id) {
+		this.bookDao.deleteBook(this.bookDao.getBookById(id));
+	}
+	
+	public List<Book> getCarouselBooks() {
+		return this.bookDao.getCarouselBooks();
+	}
 }

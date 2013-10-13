@@ -1,0 +1,127 @@
+<html t:type="admin/layout" title="编辑图书"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+      xmlns:p="tapestry:parameter">
+
+<div class="mws-panel grid_8">
+   	<div class="mws-panel-header">
+       	<span>编辑图书</span>
+       </div>
+       <div class="mws-panel-body no-padding">
+       	<t:form class="mws-form" t:id="bookForm">
+       	
+       		<div class="mws-form-inline">
+       			<div class="mws-form-row">
+       				<label class="mws-form-label">已选择图书封面：</label>
+       				<div class="mws-form-item">
+       					<t:if test="book.attachment">
+       						<img src="/../${uploadFolder }/${book.attachment}" />
+       					</t:if>
+       				</div>
+       			</div>
+       			
+       			<div class="mws-form-row">
+       				<label class="mws-form-label">上传图书封面：</label>
+       				<div class="mws-form-item">
+       					<t:upload t:id="file" t:value="file" class="small"/>
+       				</div>
+       			</div>
+       		
+       			<div class="mws-form-row">
+       				<label class="mws-form-label">图书名称：</label>
+       				<div class="mws-form-item">
+       					<t:textfield value="book?.name" class="small" />
+       				</div>
+       			</div>
+       			
+       			<div class="mws-form-row">
+       				<label class="mws-form-label">图书类别</label>
+       				<div class="mws-form-item">
+       					<t:select t:id="category" model="categories" value="book.category" class="small">
+       					</t:select>
+       				</div>
+       			</div>
+       			
+       			<div class="mws-form-row">
+       				<label class="mws-form-label">首页轮播</label>
+       				<div class="mws-form-item">
+       					<t:radioGroup value="book.featured">
+       					<ul class="mws-form-list">
+       						<li>
+       							<t:radio t:id="yesf" value="literal:true" />
+       							<t:label for="yesf">是</t:label>
+       						</li>
+       						<li>
+       							<t:radio t:id="nof" value="literal:false" />
+       							<t:label for="nof">否</t:label>
+       						</li>
+       					</ul>
+       					</t:radioGroup>
+       				</div>
+       			</div>
+       			
+       			<div class="mws-form-row">
+       				<label class="mws-form-label">价格：</label>
+       				<div class="mws-form-item">
+       					<t:textfield value="book?.price" class="small" />
+       				</div>
+       			</div>
+       			
+       			<div class="mws-form-row">
+       				<label class="mws-form-label">数量：</label>
+       				<div class="mws-form-item">
+       					<t:textfield value="book.inventory?.quantity" class="small" />
+       				</div>
+       			</div>
+       			
+       			<div class="mws-form-row">
+       				<label class="mws-form-label">ISBN编码：</label>
+       				<div class="mws-form-item">
+       					<t:textfield value="book?.isbn" class="small" />
+       				</div>
+       			</div>
+       			
+       			<div class="mws-form-row">
+       				<label class="mws-form-label">作者：</label>
+       				<div class="mws-form-item">
+       					<t:textfield value="book?.author" class="small" />
+       				</div>
+       			</div>
+       			
+       			<div class="mws-form-row">
+       				<label class="mws-form-label">出版社：</label>
+       				<div class="mws-form-item">
+       					<t:textfield value="book?.press" class="small" />
+       				</div>
+       			</div>
+       			
+       			<div class="mws-form-row">
+       				<label class="mws-form-label">出版日期：</label>
+       				<div class="mws-form-item">
+       					<t:DateField format="yyyy-MM-dd" value="book?.publishDate" class="small" />
+       				</div>
+       			</div>
+       			
+       			<div class="mws-form-row">
+       				<label class="mws-form-label">图书概要：</label>
+       				<div class="mws-form-item">
+       					<t:textarea value="book?.overview" rows="" cols="" class="large" ></t:textarea>
+       				</div>
+       			</div>
+       			
+       			<div class="mws-form-row">
+       				<label class="mws-form-label">图书描述：</label>
+       				<div class="mws-form-item">
+       					<t:textarea id="cleditor" t:id="cleditor" value="book?.description"  rows="" cols="" class="large" ></t:textarea>
+       				</div>
+       			</div>
+       			
+       		</div>
+       		<div class="mws-button-row">
+       			<input type="submit" value="提交" class="btn btn-danger" />
+       			<input type="reset" value="重填" class="btn " />
+       		</div>
+       	</t:form>
+       </div>    	
+   </div>
+
+</html>

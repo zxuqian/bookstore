@@ -1,33 +1,52 @@
 ;(function($, document, window, undefined) {
+	
 	$(document).ready(function() {
 		$.datepicker.setDefaults({
 			dateFormat: "yy-mm-dd"
 		});
 		// Data Tables
 		$("#bookmanagement").addClass("mws-datatable-fn mws-table");
-//        if( $.fn.dataTable ) {
-//            //$(".mws-datatable").dataTable();
-//            $(".mws-datatable-fn").dataTable({
-//                sPaginationType: "full_numbers",
-//                "oLanguage": {
-//                    "sLengthMenu": "每页显示  _MENU_ 条记录",
-//                    "sZeroRecords": "对不起，没有找到数据",
-//                    "sInfo": "显示第 _START_ 到 _END_ 条，共 _TOTAL_ 条记录",
-//                    "sInfoEmpty": "显示 0 到 0 条， 共 0 条记录",
-//                    "sInfoFiltered": "(从 _MAX_ 条记录中过滤)",
-//                    "sSearch": "搜索",
-//                    "oPaginate": {
-//                    	"sFirst": "首页",
-//                        "sLast": "尾页",
-//                        "sNext": "下一页",
-//                        "sPrevious": "上一页"
-//                    }
-//                    //"bProcessing": true,
-//                    //"bServerSide": true,
-//                    //"sAjaxSource": ""
-//                }
-//            });
-//        }
+        if( $.fn.dataTable ) {
+        	$("tfoot").remove();
+        }
+        
+        /**
+         * Fortuenately I got this! Global ajax handler!
+         */
+        $(document).ajaxSuccess(function(event, xhr, options) {
+        	$(".deleteBook").each(function(index, element) {
+        		var a = $(this);
+        		$(this).bind("click", function(event) {
+        			$("#delete-book-dialog").dialog("option", {
+    	    			model: true,
+    	    			href: a.attr("href")
+    	    		}).dialog("open");
+    	    		event.preventDefault();
+        		});
+        	});
+        });
+        
+        if($.fn.dialog) {
+			$("#delete-book-dialog").dialog({
+                autoOpen: false,
+                title: "确认删除",
+                modal: true,
+                width: "340",
+                buttons: [{
+                    text: "取消",
+                    click: function () {
+                        $(this).dialog("close");
+                    }
+                },{
+                    text: "是的，我确认",
+                    click: function (event) {
+                        $(this).dialog("close");
+                        window.location.href = $(this).dialog("option", "href");
+                    },
+                }]
+            });
+		}
 	});
 	
 })(jQuery, document, window);
+

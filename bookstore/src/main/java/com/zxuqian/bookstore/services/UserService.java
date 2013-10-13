@@ -14,4 +14,11 @@ public class UserService {
 		return userDao.getUserByUserName(username);
 	}
 	
+	public void saveOrUpdate(User user) {
+		this.userDao.saveOrUpdate(user);
+	}
+	
+	public User getUserById(Long id) {
+		return this.userDao.getUserById(id);
+	}
 }

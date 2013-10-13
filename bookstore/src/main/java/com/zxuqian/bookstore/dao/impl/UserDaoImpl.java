@@ -17,4 +17,14 @@ public class UserDaoImpl implements UserDao {
 				.setString("username", username).uniqueResult();
 	}
 
+	public void saveOrUpdate(User user) {
+		this.session.saveOrUpdate(user);
+		
+	}
+
+	public User getUserById(Long id) {
+		return (User)this.session.get(User.class, id);
+	}
+	
+
 }

@@ -11,6 +11,7 @@ public class Address {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	private String address;
+	private String name;
 	private String zipCode;
 	private String province;
 	private String city;
@@ -54,7 +55,11 @@ public class Address {
 	public void setCounty(String county) {
 		this.county = county;
 	}
-	
-	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 
 }
