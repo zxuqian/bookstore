@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Address {
@@ -13,9 +14,9 @@ public class Address {
 	private String address;
 	private String name;
 	private String zipCode;
-	private String province;
+	@OneToOne
+	private Province province;
 	private String city;
-	private String county;
 	
 	public Address() {
 	}
@@ -37,10 +38,10 @@ public class Address {
 	public void setZipCode(String zipCode) {
 		this.zipCode = zipCode;
 	}
-	public String getProvince() {
+	public Province getProvince() {
 		return province;
 	}
-	public void setProvince(String province) {
+	public void setProvince(Province province) {
 		this.province = province;
 	}
 	public String getCity() {
@@ -48,12 +49,6 @@ public class Address {
 	}
 	public void setCity(String city) {
 		this.city = city;
-	}
-	public String getCounty() {
-		return county;
-	}
-	public void setCounty(String county) {
-		this.county = county;
 	}
 	public String getName() {
 		return name;

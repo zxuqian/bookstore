@@ -24,7 +24,7 @@
 					<div class="col-1 address">
 						<header class="title">
 							<h3>收货地址</h3>
-							<a href="http://dummy.crunchpress.com/book-store/shortcodes/my-account/edit-address/?address=billing" class="edit">编辑</a>
+							<t:pageLink page="user/EditMyAddress" class="edit">编辑</t:pageLink>
 						</header>
 						
 						<address>

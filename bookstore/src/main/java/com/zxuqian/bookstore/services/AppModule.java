@@ -15,7 +15,9 @@ import org.apache.tapestry5.services.Response;
 import org.got5.tapestry5.jquery.JQuerySymbolConstants;
 import org.slf4j.Logger;
 
+import com.zxuqian.bookstore.dao.AddressDao;
 import com.zxuqian.bookstore.dao.UserDao;
+import com.zxuqian.bookstore.dao.impl.AddressDaoImpl;
 import com.zxuqian.bookstore.dao.impl.UserDaoImpl;
 
 /**
@@ -34,6 +36,9 @@ public class AppModule
         // invoking the constructor.
     	binder.bind(UserDao.class, UserDaoImpl.class);
     	binder.bind(UserService.class);
+    	
+    	binder.bind(AddressDao.class, AddressDaoImpl.class);
+    	binder.bind(AddressService.class);
     }
 
     public static void contributeFactoryDefaults(

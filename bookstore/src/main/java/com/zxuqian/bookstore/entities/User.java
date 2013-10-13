@@ -1,10 +1,14 @@
 package com.zxuqian.bookstore.entities;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
 @Entity
@@ -25,8 +29,9 @@ public class User {
 	private String email;
 	private String phone;
 	
-	@ManyToOne
-	private Address address;
+	@OneToMany
+	@JoinColumn(name = "user_id")
+	private List<Address> address;
 	
 	@ManyToOne
 	private Role role;
@@ -102,11 +107,11 @@ public class User {
 		this.phone = phone;
 	}
 
-	public Address getAddress() {
+	public List<Address> getAddress() {
 		return address;
 	}
 
-	public void setAddress(Address address) {
+	public void setAddress(List<Address> address) {
 		this.address = address;
 	}
 

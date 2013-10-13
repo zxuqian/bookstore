@@ -2,8 +2,10 @@ package com.zxuqian.bookstore.pages;
 
 import javax.inject.Inject;
 
+import org.apache.tapestry5.PersistenceConstants;
 import org.apache.tapestry5.annotations.Component;
 import org.apache.tapestry5.annotations.InjectPage;
+import org.apache.tapestry5.annotations.Persist;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.corelib.components.Form;
 
@@ -17,6 +19,7 @@ public class Login {
 	private UserService userService;
 	
 	@Property
+	@Persist(PersistenceConstants.SESSION)
 	private User user;
 	
 	@Component(id = "register")
