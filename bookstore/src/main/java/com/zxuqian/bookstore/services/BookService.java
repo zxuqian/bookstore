@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import com.zxuqian.bookstore.dao.BookDao;
 import com.zxuqian.bookstore.entities.Book;
+import com.zxuqian.bookstore.entities.Comment;
 
 public class BookService {
 	
@@ -38,5 +39,17 @@ public class BookService {
 	
 	public List<Book> getCarouselBooks() {
 		return this.bookDao.getCarouselBooks();
+	}
+	
+	public void saveOrUpdateComment(Comment comment) {
+		this.bookDao.saveOrUpdateComment(comment);
+	}
+
+	public void deleteComment(Comment comment) {
+		this.bookDao.deleteComment(comment);
+	}
+	
+	public List<Comment> getLatestComments() {
+		return this.bookDao.getLatestComments();
 	}
 }

@@ -36,6 +36,7 @@ public class LayoutStack implements JavaScriptStack {
 		javascriptAssets.add(assetSource.getContextAsset("layout/frontend/js/bookblock.js", null));
 		javascriptAssets.add(assetSource.getContextAsset("layout/frontend/js/custom.js", null));
 		javascriptAssets.add(assetSource.getContextAsset("layout/frontend/js/social.js", null));
+		javascriptAssets.add(assetSource.getContextAsset("layout/frontend/js/raty/jquery.raty.js", null));
 		
 		return javascriptAssets;
 	}

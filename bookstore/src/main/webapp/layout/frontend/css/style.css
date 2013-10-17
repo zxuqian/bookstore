@@ -601,3 +601,8 @@ h3.sub-heading-404{ font-size: 26px; text-align: center;}
 .the-icons li { float: left; line-height: 25px; width: 25%; }
 /*----------- End Icons Dividers -----------*/
 /* End Short Codes Styling */
+
+/* star */
+.star img{
+	margin: 0;
+}

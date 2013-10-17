@@ -5,6 +5,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.apache.tapestry5.SelectModel;
+import org.apache.tapestry5.annotations.InjectPage;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.annotations.SessionState;
 import org.apache.tapestry5.services.SelectModelFactory;
@@ -28,9 +29,7 @@ public class EditMyAddress {
 	
 	@Inject
 	private SelectModelFactory selectModelFactory;
-	
-	private SelectModel selectModel;
-	
+		
 	@Property
 	private Address address;
 	
@@ -43,9 +42,18 @@ public class EditMyAddress {
 	@Inject
 	private UserService userService;
 	
-	public void onPrepareFromEditAddress() {
+	@InjectPage
+	private MyAccount myAccount;
+	
+	public void onActivate() {
 		this.provinces = addressService.getProvinces();
-		this.address = new Address();
+		if(this.user.getAddress() == null) {
+			this.address = new Address();
+		} else {
+			this.address = this.user.getAddress();
+			this.province = this.address.getProvince();
+		}
+		
 	}
 	
 	/**
@@ -59,15 +67,18 @@ public class EditMyAddress {
 	/**
 	 * 保存收货地址
 	 */
-	public void onSuccessFromEditAddress() {
+	public MyAccount onSuccessFromEditAddress() {
 		if(userExists) {
 			if(province != null) {
 				this.address.setProvince(this.province);
 				this.addressService.saveOrUpdateAddress(address);
-				this.user.getAddress().add(this.address);
+				this.user.setAddress(this.address);
 				this.userService.saveOrUpdate(user);
+				return this.myAccount;
 			}
 		}
+		
+		return null;
 	}
 
 }

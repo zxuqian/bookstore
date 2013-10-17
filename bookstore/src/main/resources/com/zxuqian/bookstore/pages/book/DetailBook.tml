@@ -1,0 +1,372 @@
+<html t:type="layout" title="图书详情"
+	xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd" xmlns:p="tapestry:parameter">
+
+	<section class="row-fluid">
+		<div class="heading-bar">
+			<h2>图书详情</h2>
+			<span class="h-line"></span>
+		</div>
+		<!-- Start Main Content -->
+		<section class="span9 first">
+			<!-- Strat Book Detail Section -->
+			<section class="b-detail-holder">
+				<article class="title-holder">
+					<div class="span6">
+						<h4>
+							<strong>${book?.name}</strong>
+							by ${book?.author}
+						</h4>
+					</div>
+					<div class="span6 book-d-nav">
+						<ul>
+							<li>
+								<a href="#">${commentsCount} 条评论</a>
+							</li>
+						</ul>
+					</div>
+				</article>
+				<div class="book-i-caption">
+					<!-- Strat Book Image Section -->
+					<div class="span6 b-img-holder">
+						<span class='zoom' id='ex1'>
+							<img src='/../${uploadFolder}/${book?.attachment}' height="219" width="300" id='jack'
+								alt='' />
+						</span>
+					</div>
+					<!-- Strat Book Image Section -->
+
+					<!-- Strat Book Overview Section -->
+					<div class="span6">
+						<strong class="title">图书概要</strong>
+						<p>
+							${book?.overview}
+						</p>
+						<p>
+							库存状态:
+							<a href="#">${bookState}</a>
+						</p>
+						<div class="comm-nav">
+							<strong class="title2">数量</strong>
+							<t:form t:id="addToCart" zone="cartZone" context="book">
+								<ul>
+									<li>
+										<t:textfield t:id="quantity" value="quantity"/>
+									</li>
+									<li class="b-price">￥${book?.price}</li>
+									<li>
+										<t:submit class="more-btn" value="+ 添加到购物车" />
+									</li>
+								</ul>
+							</t:form>
+							
+						</div>
+					</div>
+					<!-- End Book Overview Section -->
+				</div>
+
+				<!-- Start Book Summary Section -->
+				<div class="tabbable">
+					<ul class="nav nav-tabs">
+						<li class="active">
+							<a href="#pane1" data-toggle="tab">图书详情</a>
+						</li>
+						<li>
+							<a href="#pane2" data-toggle="tab">其他信息</a>
+						</li>
+					</ul>
+					<div class="tab-content">
+						<div id="pane1" class="tab-pane active">
+							<t:outputraw value="book.description" />
+						</div>
+						<div id="pane2" class="tab-pane">
+							<p>作者：${book.author}</p>
+							<p>ISBN：${book.isbn}</p>
+							<p>出版日期：${publishDate}</p>
+							<p>分类：${book.category.name}</p>
+						</div>
+					</div><!-- /.tab-content -->
+				</div><!-- /.tabbable -->
+				<!-- End Book Summary Section -->
+
+				<!-- Start BX Slider holder -->
+				<section class="related-book">
+					<div class="heading-bar">
+						<h2>Related Books</h2>
+						<span class="h-line"></span>
+					</div>
+					<div class="slider6">
+						<div class="slide">
+							<a href="book-detail.html">
+								<img src="images/image05.jpg" alt="" class="pro-img" />
+							</a>
+							<span class="title">
+								<a href="book-detail.html">A Walk Across The Sun</a>
+							</span>
+							<span class="rating-bar">
+								<img src="images/rating-star.png" alt="Rating Star" />
+							</span>
+							<div class="cart-price">
+								<a class="cart-btn2" href="cart.html">Add to Cart</a>
+								<span class="price">$129.90</span>
+							</div>
+						</div>
+						<div class="slide">
+							<a href="book-detail.html">
+								<img src="images/image06.jpg" alt="" class="pro-img" />
+							</a>
+							<span class="title">
+								<a href="book-detail.html">A Walk Across The Sun</a>
+							</span>
+							<span class="rating-bar">
+								<img src="images/rating-star.png" alt="Rating Star" />
+							</span>
+							<div class="cart-price">
+								<a class="cart-btn2" href="cart.html">Add to Cart</a>
+								<span class="price">$129.90</span>
+							</div>
+						</div>
+						<div class="slide">
+							<a href="book-detail.html">
+								<img src="images/image07.jpg" alt="" class="pro-img" />
+							</a>
+							<span class="title">
+								<a href="book-detail.html">A Walk Across The Sun</a>
+							</span>
+							<span class="rating-bar">
+								<img src="images/rating-star.png" alt="Rating Star" />
+							</span>
+							<div class="cart-price">
+								<a class="cart-btn2" href="cart.html">Add to Cart</a>
+								<span class="price">$129.90</span>
+							</div>
+						</div>
+						<div class="slide">
+							<a href="book-detail.html">
+								<img src="images/image08.jpg" alt="" class="pro-img" />
+							</a>
+							<span class="title">
+								<a href="book-detail.html">A Walk Across The Sun</a>
+							</span>
+							<span class="rating-bar">
+								<img src="images/rating-star.png" alt="Rating Star" />
+							</span>
+							<div class="cart-price">
+								<a class="cart-btn2" href="cart.html">Add to Cart</a>
+								<span class="price">$129.90</span>
+							</div>
+						</div>
+					</div>
+				</section>
+				<!-- End BX Slider holder -->
+
+				<!-- Stsrt Customer Reviews Section -->
+				<section class="reviews-section">
+					<figure class="left-sec">
+						<div class="r-title-bar">
+							<strong>顾客评论</strong>
+						</div>
+						<ul class="review-list">
+							<t:loop element="li" source="book.comments" value="comment">
+								<span class="rating-bar">
+									<div class="star" data-number="${comment.star}"></div>
+								</span>
+								<em class="">${comment.name}</em>
+								<h4>${comment.overview}</h4>
+								<p>${comment.detail}</p>
+							</t:loop>
+						</ul>
+					</figure>
+					<t:form t:id="addComment">
+					<figure class="right-sec">
+						<div class="r-title-bar">
+							<strong>添加一条评论</strong>
+						</div>
+						<ul class="review-f-list">
+							<li>
+								<label>姓名 *</label>
+								<t:textfield value="comment.name" />
+							</li>
+							<li>
+								<label>主题 *</label>
+								<t:textfield value="comment.overview" />
+							</li>
+							<li>
+								<label>评论 *</label>
+								<t:textarea value="comment.detail" cols="2" rows="20"></t:textarea>
+							</li>
+							<li>
+								<label>您如何评价本书？ *</label>
+								<div class="rating-list">
+									<div class="rating-box">
+										<t:radiogroup value="comment.star">
+										<label class="radio">
+											<t:radio value="1" />1星
+										</label>
+										<label class="radio">
+											<t:radio value="2" />
+												2星
+										</label>
+										<label class="radio">
+											<t:radio value="3" />
+												3星
+										</label>
+										<label class="radio">
+											<t:radio value="4" />
+												4星
+										</label>
+										<label class="radio">
+											<t:radio value="5" checked="true" />
+												5星
+										</label>
+									</t:radiogroup>
+									</div>
+								</div>
+							</li>
+						</ul>
+						<t:submit class="grey-btn left-btn" value="写下自己的评论"></t:submit>
+					</figure>
+					</t:form>
+				</section>
+				<!-- End Customer Reviews Section -->
+			</section>
+			<!-- Strat Book Detail Section -->
+		</section>
+		<!-- End Main Content -->
+
+		<!-- Start Main Side Bar -->
+		<section class="span3">
+			<div class="side-holder">
+				<article class="banner-ad">
+					<img src="images/image20.jpg" alt="Banner Ad" />
+				</article>
+			</div>
+
+			<!-- Start Shop by Section -->
+			<div class="side-holder">
+				<article class="shop-by-list">
+					<h2>Shop by</h2>
+					<div class="side-inner-holder">
+						<strong class="title">Category</strong>
+						<ul class="side-list">
+							<li>
+								<a href="grid-view.html">Fiction (15)</a>
+							</li>
+							<li>
+								<a href="grid-view.html">Healthcare (15)</a>
+							</li>
+							<li>
+								<a href="grid-view.html">Technology (15)</a>
+							</li>
+							<li>
+								<a href="grid-view.html">Science(15)</a>
+							</li>
+						</ul>
+						<strong class="title">Price</strong>
+						<ul class="side-list">
+							<li>
+								<a href="#">$0.00 - $10,00.00 (13)</a>
+							</li>
+							<li>
+								<a href="#">$10,00.00 - $20,00.00 (2)</a>
+							</li>
+						</ul>
+						<strong class="title">Author</strong>
+						<ul class="side-list">
+							<li>
+								<a href="book-detail.html">Khalid Hoessini (9)</a>
+							</li>
+							<li>
+								<a href="book-detail.html">William Blake (2)</a>
+							</li>
+							<li>
+								<a href="book-detail.html">Anna Kathrinena (1)</a>
+							</li>
+							<li>
+								<a href="book-detail.html">Gray Alvin (3)</a>
+							</li>
+						</ul>
+					</div>
+				</article>
+			</div>
+			<!-- End Shop by Section -->
+
+			<!-- Start Latest Reviews Section -->
+			<div class="side-holder">
+				<article class="l-reviews">
+					<h2>最近评论</h2>
+					<!-- need to modify - the comment of all book -->
+					<div class="side-inner-holder">
+						<t:loop element="article" source="latestComments"
+							value="comment" class="r-post">
+							<div class="r-img-title">
+								<img src="/../${uploadFolder}/${comment.book.attachment}" width="73" height="73" />
+								<div class="r-det-holder">
+									<strong class="r-author">
+										<a href="book-detail.html">${comment.book.name}</a>
+									</strong>
+								</div>
+								<span class="r-by">作者：${comment.book.author}</span>
+								<span class="rating-bar" style="float:left">
+									<div class="star" data-number="${comment.star}" />
+								</span>
+							</div>
+							<span class="r-type">读者评论</span>
+							<p>“ ${comment.detail} ” </p>
+						</t:loop>
+					</div>
+				</article>
+			</div>
+			<!-- End Latest Reviews Section -->
+
+			<!-- Start Price Range Section -->
+			<div class="side-holder">
+				<article class="price-range">
+					<h2>Price Range</h2>
+					<div class="side-inner-holder">
+						<p>Select the price range for better search</p>
+						<div id="slider-range"></div>
+						<p>
+							<input type="text" id="amount" class="r-input" />
+						</p>
+					</div>
+				</article>
+			</div>
+			<!-- End Price Range Section -->
+
+			<!-- Start Community Poll Section -->
+			<div class="side-holder">
+				<article class="price-range">
+					<h2>Community Poll</h2>
+					<div class="side-inner-holder">
+						<p>Who is your favourite American author?</p>
+						<label class="radio">
+							<input type="radio" name="optionsRadios" id="optionsRadios1"
+								value="option1" checked="checked" />
+								Jane Austin
+						</label>
+						<label class="radio">
+							<input type="radio" name="optionsRadios" id="optionsRadios2"
+								value="option2" />
+								William Blake
+						</label>
+						<label class="radio">
+							<input type="radio" name="optionsRadios" id="optionsRadios1"
+								value="option1" checked="checked" />
+								Keith Urban
+						</label>
+						<label class="radio">
+							<input type="radio" name="optionsRadios" id="optionsRadios2"
+								value="option2" />
+								Anna Smith
+						</label>
+						<a href="#" class="vote-btn">Vote</a>
+					</div>
+				</article>
+			</div>
+			<!-- End Community Poll Section -->
+
+		</section>
+		<!-- End Main Side Bar -->
+	</section>
+
+</html>

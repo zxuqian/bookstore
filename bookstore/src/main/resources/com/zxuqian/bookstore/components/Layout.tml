@@ -43,11 +43,11 @@
           </ul>
           <div class="c-btn"> <a href="cart.html" class="cart-btn">Cart</a>
             <div class="btn-group">
-              <button data-toggle="dropdown" class="btn btn-mini dropdown-toggle">0 件 - ￥0.00<span class="caret"></span></button>
+              <t:zone elementName="button" t:id="cartZone" data-toggle="dropdown" class="btn btn-mini dropdown-toggle">${cartSize} 件 - ￥${total}<span class="caret"></span></t:zone>
               <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
+                <li><t:pagelink page="order/Index">结算</t:pagelink></li>
+                <li><t:eventlink t:id="truncate" zone="cartZone">清空</t:eventlink></li>
+                <li><t:pagelink page="ShowCart">查看购物车</t:pagelink></li>
               </ul>
             </div>
           </div>

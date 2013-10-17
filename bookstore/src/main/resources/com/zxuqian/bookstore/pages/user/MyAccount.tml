@@ -24,12 +24,19 @@
 					<div class="col-1 address">
 						<header class="title">
 							<h3>收货地址</h3>
-							<t:pageLink page="user/EditMyAddress" class="edit">编辑</t:pageLink>
+							<t:pageLink page="user/EditMyAddress" context="user?.id" class="edit">编辑</t:pageLink>
 						</header>
 						
 						<address>
 							<t:if test="!user.address">
 								您还未设置收货地址
+								<p:else>
+									${user.address.province.province}, 
+									${user.address.city}, ${user.address.address}<br />
+									${user.address.zipCode}<br />
+									${user.address.name}<br />
+									${user.phone}
+								</p:else>
 							</t:if>
 						</address>
 					</div>

@@ -12,12 +12,13 @@
          	 <div class="bb-item">
 	            <div class="bb-custom-content">
 	              <div class="slide-inner">
-	                <div class="span4 book-holder"> <a href="book-detail.html"><img src="/../${uploadFolder }/${book?.attachment}" alt="Book" /></a>
+	                <div class="span4 book-holder"> <img src="/../${uploadFolder }/${book?.attachment}" alt="Book" />
 	                  <div class="cart-price"> <a class="cart-btn2" href="cart.html">Add to Cart</a> <span class="price">￥${book?.price}</span> </div>
 	                </div>
 	                <div class="span8 book-detail">
-	                  <h2>${book?.name }</h2>
-	                  <strong class="title">作者：${book?.author }</strong> <span class="rating-bar"> <img src="${context:layout/frontend/images/raing-star2.png}" alt="Rating Star" /> </span> <a href="book-detail.html" class="shop-btn">立刻购买</a>
+	                  <h2><t:pagelink page="book/Detail" context="book.id">${book?.name }</t:pagelink></h2>
+	                  <strong class="title">作者：${book?.author }</strong> <span class="rating-bar"> <img src="${context:layout/frontend/images/raing-star2.png}" alt="Rating Star" /> </span> 
+	                  <t:eventlink event="addToCart" context="book" class="shop-btn" zone="cartZone">立刻购买</t:eventlink>
 	                  <div class="cap-holder">
 	                    <p><img src="${context:layout/frontend/images/image27.png}" alt="最佳选择" align="right"/> ${book?.overview } </p>
 	                    <a href="book-detail.html">详细</a> </div>

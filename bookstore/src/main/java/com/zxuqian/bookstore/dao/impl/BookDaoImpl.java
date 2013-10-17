@@ -9,6 +9,7 @@ import org.hibernate.Session;
 
 import com.zxuqian.bookstore.dao.BookDao;
 import com.zxuqian.bookstore.entities.Book;
+import com.zxuqian.bookstore.entities.Comment;
 
 public class BookDaoImpl implements BookDao {
 
@@ -38,6 +39,20 @@ public class BookDaoImpl implements BookDao {
 
 	public List<Book> getCarouselBooks() {
 		return this.session.createQuery("from Book b where b.featured = true")
+				.list();
+	}
+
+	public void saveOrUpdateComment(Comment comment) {
+		this.session.saveOrUpdate(comment);
+	}
+
+	public void deleteComment(Comment comment) {
+		this.session.delete(comment);
+	}
+
+	public List<Comment> getLatestComments() {
+		return this.session.
+				createQuery("from Comment order by commentDate desc")
 				.list();
 	}
 

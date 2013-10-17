@@ -17,10 +17,10 @@ public class Inventory {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@NonVisual
 	private Long id;
-	private Integer quantity;
-	private Integer sold;
+	private int quantity;
+	private int sold;
 	@Formula("quantity - sold")
-	private Integer remains;
+	private int remains;
 	@OneToOne
 	private Book book;
 	public Long getId() {
@@ -29,22 +29,22 @@ public class Inventory {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public Integer getQuantity() {
+	public int getQuantity() {
 		return quantity;
 	}
-	public void setQuantity(Integer quantity) {
+	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-	public Integer getSold() {
+	public int getSold() {
 		return sold;
 	}
-	public void setSold(Integer sold) {
+	public void setSold(int sold) {
 		this.sold = sold;
 	}
-	public Integer getRemains() {
+	public int getRemains() {
 		return remains;
 	}
-	public void setRemains(Integer remains) {
+	public void setRemains(int remains) {
 		this.remains = remains;
 	}
 	

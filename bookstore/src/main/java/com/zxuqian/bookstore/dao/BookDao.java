@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.tapestry5.hibernate.annotations.CommitAfter;
 
 import com.zxuqian.bookstore.entities.Book;
+import com.zxuqian.bookstore.entities.Comment;
 
 public interface BookDao {
 
@@ -25,5 +26,14 @@ public interface BookDao {
 	
 	@CommitAfter
 	public List<Book> getCarouselBooks();
+	
+	@CommitAfter
+	public void saveOrUpdateComment(Comment comment);
+	
+	@CommitAfter
+	public void deleteComment(Comment comment);
+	
+	@CommitAfter
+	public List<Comment> getLatestComments();
 	
 }

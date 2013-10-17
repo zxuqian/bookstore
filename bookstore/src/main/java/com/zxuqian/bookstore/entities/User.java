@@ -8,7 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Transient;
 
 @Entity
@@ -29,9 +29,8 @@ public class User {
 	private String email;
 	private String phone;
 	
-	@OneToMany
-	@JoinColumn(name = "user_id")
-	private List<Address> address;
+	@OneToOne
+	private Address address;
 	
 	@ManyToOne
 	private Role role;
@@ -107,11 +106,11 @@ public class User {
 		this.phone = phone;
 	}
 
-	public List<Address> getAddress() {
+	public Address getAddress() {
 		return address;
 	}
 
-	public void setAddress(List<Address> address) {
+	public void setAddress(Address address) {
 		this.address = address;
 	}
 
