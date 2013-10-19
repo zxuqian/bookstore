@@ -78,7 +78,12 @@ public class Layout {
      * @return
      */
     public int getCartSize() {
-    	return this.cart.size();
+    	int sum = 0;
+    	for(Book book : this.cart) {
+    		sum += book.getQuantity();
+    	}
+    	
+    	return sum;
     }
     
     /**

@@ -16,5 +16,10 @@ public class SiteConstants {
 	 * 库存状态
 	 */
 	public static final String BOOK_NOT_AVAILABLE = "无货";
+	
+	/**
+	 * 运费
+	 */
+	public static final double SHIPPING = 0.0;
 
 }

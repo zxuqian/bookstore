@@ -16,8 +16,10 @@ import org.got5.tapestry5.jquery.JQuerySymbolConstants;
 import org.slf4j.Logger;
 
 import com.zxuqian.bookstore.dao.AddressDao;
+import com.zxuqian.bookstore.dao.OrderDao;
 import com.zxuqian.bookstore.dao.UserDao;
 import com.zxuqian.bookstore.dao.impl.AddressDaoImpl;
+import com.zxuqian.bookstore.dao.impl.OrderDaoImpl;
 import com.zxuqian.bookstore.dao.impl.UserDaoImpl;
 
 /**
@@ -39,6 +41,9 @@ public class AppModule
     	
     	binder.bind(AddressDao.class, AddressDaoImpl.class);
     	binder.bind(AddressService.class);
+    	
+    	binder.bind(OrderDao.class, OrderDaoImpl.class);
+    	binder.bind(OrderService.class);
     }
 
     public static void contributeFactoryDefaults(

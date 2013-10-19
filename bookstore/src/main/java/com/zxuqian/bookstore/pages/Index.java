@@ -44,13 +44,13 @@ public class Index{
 	
 	public Object onAddToCart(Book book) {
 		book.setQuantity(1);
-//		if(this.cart.contains(book)) {
-//			this.cart.get(this.cart.indexOf(book)).
-//				setQuantity(this.cart.get(this.cart.indexOf(book))
-//						.getQuantity() + 1);
-//		} else {
+		if(this.cart.contains(book)) {
+			this.cart.get(this.cart.indexOf(book)).
+				setQuantity(this.cart.get(this.cart.indexOf(book))
+						.getQuantity() + 1);
+		} else {
 			this.cart.add(book);
-//		}
+		}
 		return this.cartZone.getBody();
 	}
 	

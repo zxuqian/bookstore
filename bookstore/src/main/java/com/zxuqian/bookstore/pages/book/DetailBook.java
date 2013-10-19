@@ -62,19 +62,19 @@ public class DetailBook {
 	 * @return
 	 */
 	public Object onSuccessFromAddToCart(Book book) {
-//		book.setQuantity(this.quantity);
-//		if(this.cart.contains(book)) {
-//			this.cart.get(this.cart.indexOf(book)).
-//				setQuantity(this.cart.get(this.cart.indexOf(book))
-//						.getQuantity() + this.quantity);
-//		} else {
-		if(!cartExists) {
-			this.cart = new ArrayList<Book>();
-		}
+		book.setQuantity(this.quantity);
+		if(this.cart.contains(book)) {
+			this.cart.get(this.cart.indexOf(book)).
+				setQuantity(this.cart.get(this.cart.indexOf(book))
+						.getQuantity() + this.quantity);
+		} else {
+		//if(!cartExists) {
+		//	this.cart = new ArrayList<Book>();
+		//}
 		
 			book.setQuantity(quantity);
 			this.cart.add(book);
-//		}
+		}
 		return this.cartZone.getBody();
 	}
 	
@@ -91,8 +91,10 @@ public class DetailBook {
 	 * @return
 	 */
 	public String getBookState() {
-		if(this.book.getInventory() != null
-				&& this.book.getInventory().getRemains() > 0) {
+		if(this.book.getInventory() != null) {
+			if(this.book.getInventory().getRemains() > 0 && this.book.getInventory().getRemains() < 10) {
+				return "此图书只剩" + this.book.getInventory().getRemains() + "件";
+			}
 			return SiteConstants.BOOK_IN_STOCK;
 		}
 		

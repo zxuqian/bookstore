@@ -1,0 +1,268 @@
+<html t:type="layout" title="结算"
+	xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd" xmlns:p="tapestry:parameter">
+
+	<section id="content-holder" class="container-fluid container">
+		<div class="row-fluid no-sidebar">
+			<div class=" cp-page-float-left">
+				<div class="span12 page-item">
+					<section class="span12 wrapper">
+						<div class="heading-bar">
+							<h2>结算</h2>
+							<span class="h-line"></span>
+						</div>
+						<div class="cp-page-wrapper">
+							<div class="cp-page-content">
+								<div class="woocommerce">
+									<p class="woocommerce-info">
+										已经是会员？
+										<a href="#"
+											class="showlogin">点击这里登录</a>
+									</p>
+
+									<form method="post" class="login" style="display: none;">
+										<p>如果您曾经购买过我们的书籍，请填写如下信息登录。如果您是第一次购买，请填写配送信息</p>
+
+										<p class="form-row form-row-first">
+											<label for="username">
+												用户名或邮箱
+												<span class="required">*</span>
+											</label>
+											<input type="text" class="input-text" name="username"
+												id="username" />
+										</p>
+										<p class="form-row form-row-last">
+											<label for="password">
+												密码
+												<span class="required">*</span>
+											</label>
+											<input class="input-text" type="password" name="password"
+												id="password"/>
+										</p>
+										<div class="clear"></div>
+
+										<p class="form-row">
+											<input type="submit" class="btn btn-primary" name="login"
+												value="登录" />
+											<a class="lost_password"
+												href="#">忘记密码?</a>
+										</p>
+
+										<div class="clear"></div>
+									</form>
+
+									<t:form t:id="checkout" class="checkout">
+
+										<div class="col2-set" id="customer_details">
+
+											<div class="col-1">
+
+												<h3>配送地址</h3>
+
+												<div class="shipping_address">
+
+													<p class="form-row validate-required" id="shipping_first_name_field">
+														<label for="shipping_name" class="">
+															姓名
+															<abbr class="required" title="required">*</abbr>
+														</label>
+														<t:textfield class="input-text" value="address.name"
+															id="shipping_name" placeholder="" />
+													</p>
+
+													<div class="clear"></div>
+
+													<p class="form-row form-row-wide address-field validate-required"
+														id="shipping_address_1_field">
+														<label for="shipping_address" class="">
+															地址
+															<abbr class="required" title="required">*</abbr>
+														</label>
+														<t:textfield class="input-text" value="address.address"
+															id="shipping_address" placeholder="街道地址" autocomplete="no" />
+													</p>
+
+													<p class="form-row form-row-wide address-field validate-required"
+														id="shipping_city_field"
+														data-o_class="form-row form-row-wide address-field validate-required">
+														<label for="shipping_city" class="">
+															市 / 区
+															<abbr class="required" title="required">*</abbr>
+														</label>
+														<t:textfield class="input-text" id="shipping_city" 
+															value="address.city" autocomplete="no" />
+													</p>
+													
+													<p class="form-row form-row-wide address-field validate-required" id="billing_province_field">
+														<label for="billing_province" class="">
+															省份
+															<abbr class="required" title="required">*</abbr>
+														</label>
+														<t:select id="billing_province" model="provinceModel" value="province" />
+													</p>
+
+													<p class="form-row address-field validate-required"
+														id="shipping_postcode_field"
+														data-o_class="form-row form-row-last address-field validate-required">
+														<label for="shipping_postcode" class="">
+															邮编
+															<abbr class="required" title="required">*</abbr>
+														</label>
+														<t:textfield class="input-text"
+															id="shipping_postcode" placeholder="邮政编码"
+															value="address.zipCode" autocomplete="no" />
+													</p>
+
+													<div class="clear"></div>
+
+
+												</div>
+
+												<p class="form-row notes" id="order_comments_field">
+													<label for="order_comments" class="">订单备注</label>
+													<t:textarea value="order.notes" class="input-text"
+														id="order_comments"
+														placeholder="有关您订单的备注,比如特殊的配送要求"
+														cols="5" rows="2"></t:textarea>
+												</p>
+
+											<t:if test="!userExists">
+												<p class="form-row form-row-wide">
+													<t:checkbox class="input-checkbox" id="createaccount"
+															value="createUser" />
+														<label for="createaccount" class="checkbox">创建账户?</label>
+												</p>
+			
+
+												<div class="create-account" style="display: none;">
+
+													<p>请输入以下信息注册账户，若您已经是会员，请在上方登录</p>
+
+
+													<p class="form-row " id="account_username_field">
+														<label for="account_username" class="">用户名</label>
+														<input type="text" class="input-text" name="account_username"
+															id="account_username" placeholder="用户名" value="" />
+													</p>
+
+													<p class="form-row form-row-first" id="account_password_field">
+														<label for="account_password" class="">密码</label>
+														<input type="password" class="input-text" name="account_password"
+															id="account_password" placeholder="密码" value=""/>
+													</p>
+
+													<p class="form-row form-row-last" id="account_password-2_field">
+														<label for="account_password-2" class="hidden">重复密码</label>
+														<input type="password" class="input-text" name="account_password-2"
+															id="account_password-2" placeholder="重复密码"/>
+													</p>
+													<div class="clear"></div>
+												</div>
+											</t:if>
+											</div>
+										</div>
+										<h3 id="order_review_heading">您的订单</h3>
+										<div id="order_review" style="position: relative; zoom: 1;">
+
+											<table class="shop_table">
+												<thead>
+													<tr>
+														<th class="product-name">项目</th>
+														<th class="product-total">总计</th>
+													</tr>
+												</thead>
+												<tfoot>
+													<tr class="cart-subtotal">
+														<th>购物车小计</th>
+														<td>
+															<span class="amount">￥${subTotal}</span>
+														</td>
+													</tr>
+													<tr class="shipping">
+														<th>运费</th>
+														<td>
+															免运费
+														</td>
+													</tr>
+													<tr class="total">
+														<th>
+															<strong>订单总计</strong>
+														</th>
+														<td>
+															<strong>
+																<span class="amount">￥${grandTotal}</span>
+															</strong>
+														</td>
+													</tr>
+
+
+												</tfoot>
+												<tbody>
+													<t:loop element="tr" source="cart" value="book" class="checkout_table_item">
+														<td class="product-name">
+															${book.name}
+															<strong class="product-quantity">× ${book.quantity}</strong>
+														</td>
+														<td class="product-total">
+															<span class="amount">￥${book.price}</span>
+														</td>
+													</t:loop>
+												</tbody>
+											</table>
+
+											<div id="payment">
+												<t:radiogroup value="order.payment">
+												<ul class="payment_methods methods">
+													<li>
+														<t:radio id="payment_method_bacs" class="input-radio"
+															value="bankCard"/>
+															<label for="payment_method_bacs">银行转账 </label>
+													</li>
+													<li>
+														<t:radio id="payment_method_cash"
+															class="input-radio" value="cash"  checked="checked"  />
+															<label for="payment_method_cash">货到付款 </label>
+													</li>
+													<li>
+														<t:radio id="payment_method_alipay"
+															class="input-radio" value="alipay" />
+															<label for="payment_method_alipay">
+																支付宝
+																<img src="./Book Store » Checkout_files/paypal.png"
+																	alt="支付宝" />
+															</label>
+													</li>
+												</ul>
+												</t:radiogroup>
+
+												<div class="form-row place-order">
+
+													<input type="hidden" id="_n" name="_n" value="05a6d1d5ed" />
+														<input type="hidden" name="_wp_http_referer"
+															value="/book-store/wp-admin/admin-ajax.php" />
+
+															<input type="submit" class="more-btn"
+																name="woocommerce_checkout_place_order" id="place_order"
+																value="提交" />
+												</div>
+
+												<div class="clear"></div>
+
+											</div>
+
+										</div>
+
+									</t:form>
+
+								</div>
+							</div>
+						</div>
+						<div class="clear"></div>
+					</section>
+				</div>
+			</div>
+
+		</div>
+
+	</section>
+
+</html>

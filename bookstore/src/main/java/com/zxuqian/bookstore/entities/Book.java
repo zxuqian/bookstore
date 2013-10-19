@@ -1,10 +1,10 @@
 package com.zxuqian.bookstore.entities;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,8 +19,10 @@ import org.apache.tapestry5.beaneditor.NonVisual;
 import org.hibernate.annotations.Type;
 
 @Entity
-public class Book {
+public class Book implements Serializable{
 
+	private static final long serialVersionUID = 2042715380385361668L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@NonVisual

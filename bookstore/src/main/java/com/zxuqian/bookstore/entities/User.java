@@ -6,8 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Transient;
 
@@ -28,6 +28,9 @@ public class User {
 	private String age;
 	private String email;
 	private String phone;
+	
+	@OneToMany(mappedBy = "user")
+	private List<Order> oder;
 	
 	@OneToOne
 	private Address address;
@@ -120,6 +123,14 @@ public class User {
 
 	public void setRole(Role role) {
 		this.role = role;
+	}
+
+	public List<Order> getOder() {
+		return oder;
+	}
+
+	public void setOder(List<Order> oder) {
+		this.oder = oder;
 	}
 
 }
