@@ -1,0 +1,54 @@
+<html t:type="layout" title="订单完成"
+	xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd" xmlns:p="tapestry:parameter">
+
+<section id="content-holder" class="container-fluid container">
+	<div class="row-fluid no-sidebar">
+		<div class=" cp-page-float-left">
+			<div class="span12 page-item">
+				<section class="span12 wrapper">
+					<div class="heading-bar">
+						<h2>订单已创建</h2>
+						<span class="h-line"></span>
+					</div>
+					<div class="cp-page-wrapper">
+						<div class="cp-page-content">
+							<div class="woocommerce">
+
+								<p>感谢您！您的订单已收到</p>
+
+								<ul class="order_details">
+									<li class="order">
+										订单号：
+										<strong>${order.orderNumber}</strong>
+									</li>
+									<li class="date">
+										日期
+										<strong>${createdDate}</strong>
+									</li>
+									<li class="total">
+										总计：
+										<strong>
+											<span class="amount">￥${order.total}</span>
+										</strong>
+									</li>
+									<li class="method">
+										付款方式
+										<strong>${payment}</strong>
+									</li>
+								</ul>
+								<div class="clear"></div>
+
+								<div class="clear"></div>
+
+							</div>
+						</div>
+					</div>
+					<div class="clear"></div>
+				</section>
+			</div>
+		</div>
+
+	</div>
+
+</section>
+</html>

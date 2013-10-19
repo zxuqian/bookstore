@@ -5,10 +5,13 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.apache.tapestry5.Asset;
+import org.apache.tapestry5.PersistenceConstants;
 import org.apache.tapestry5.SelectModel;
 import org.apache.tapestry5.annotations.AfterRender;
 import org.apache.tapestry5.annotations.Environmental;
+import org.apache.tapestry5.annotations.InjectPage;
 import org.apache.tapestry5.annotations.Path;
+import org.apache.tapestry5.annotations.Persist;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.annotations.SessionState;
 import org.apache.tapestry5.services.SelectModelFactory;
@@ -54,6 +57,7 @@ public class IndexOrder {
 	private boolean userExists;
 	
 	@Property
+	@Persist(PersistenceConstants.FLASH)
 	private Order order;
 	
 	@Property
@@ -77,6 +81,9 @@ public class IndexOrder {
 	
 	@Property
 	private boolean createUser;
+	
+	@InjectPage
+	private OrderReceived orderReceived;
 	
 	
 	public void onActivate() {
@@ -147,7 +154,7 @@ public class IndexOrder {
 	/**
 	 * 保存订单
 	 */
-	public void onSuccessFromCheckout() {
+	public OrderReceived onSuccessFromCheckout() {
 		//保存或修改地址
 		this.address.setProvince(this.province);
 		this.order.setAddress(address);
@@ -176,6 +183,8 @@ public class IndexOrder {
 		
 		this.orderService.saveOrUpdateOrder(order);
 		
+		this.orderReceived.setOrder(this.order);
+		return this.orderReceived;
 	}
 	
 }
