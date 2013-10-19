@@ -25,5 +25,12 @@ public interface CategoryDao {
 	
 	@CommitAfter
 	void delete(Long categoryId);
+	
+	/**
+	 * 获取所有类别，包括子类别
+	 * @return
+	 */
+	@CommitAfter
+	List<Category> getAllCategories();
 
 }

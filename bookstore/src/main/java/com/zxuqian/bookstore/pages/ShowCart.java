@@ -54,7 +54,6 @@ public class ShowCart {
 
 		public Book toValue(String bookId) {
 			Long id = Long.parseLong(bookId);
-			System.out.println("what the id is: " + id + "============================");
 			for(Book book : cart) {
 				if(book.getId().equals(id)) {
 					return book;

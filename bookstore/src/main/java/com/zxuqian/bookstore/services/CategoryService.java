@@ -66,5 +66,15 @@ public class CategoryService {
 	public void delete(Long categoryId) {
 		this.categoryDao.delete(categoryId);
 	}
+	
+	public List<Category> getAllCategories() {
+		return this.categoryDao.getAllCategories();
+	}
+	
+	public void updateAllCategories(List<Category> categories) {
+		for(Category category : categories) {
+			this.saveOrUpdate(category);
+		}
+	}
 
 }

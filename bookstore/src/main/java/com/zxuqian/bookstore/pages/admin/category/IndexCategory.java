@@ -203,6 +203,7 @@ public class IndexCategory {
 		//List<Category> treeCategory = new ArrayList<Category>();
 		
 		//this.categoryService.getTreeCategories(treeCategory, this.categoryService.getReadOnlyCategories(), "");
+		//采用栈的方式取代递归
 		if(this.inZone && this.categoryChildren != null && this.categoryChildren.size() > 0) {
 			if(this.categoriesForTable.containsAll(this.categoryChildren)) {
 				Stack<Category> categoryStack = new Stack<Category>();

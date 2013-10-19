@@ -1,0 +1,117 @@
+<html t:type="admin/layout" title="前台导航设置"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+      xmlns:p="tapestry:parameter">
+        <!-- Most of the page content, including <head>, <body>, etc. tags, comes from Layout.tml -->
+    	<!-- Statistics Button Container -->
+<div class="mws-panel grid_3">
+	<t:form t:id="addNavigation">
+   	<div class="mws-panel-header">
+       	<span><i class="icon-table"></i>选择在前台菜单中显示的类别</span>
+    </div>
+    <div class="mws-panel-toolbar">
+        <div class="btn-toolbar">
+            <div class="btn-group">
+                <t:linksubmit class="btn"><i class="icol-accept"></i> 添加</t:linksubmit>
+            </div>
+        </div>
+    </div>   
+       
+       <div class="mws-panel-body no-padding">
+           <t:grid t:source="categories" t:row="category" class="mws-table"
+           	 t:include="name, description" add="checkbox" reorder="checkbox, name, description"
+           	 rowsPerPage="literal:10" pagerPosition="bottom">
+           
+           <p:checkboxcell>
+               <t:checkbox value="category.navigation" />
+           </p:checkboxcell>
+           <!-- 
+               <thead>
+                   <tr>
+                   	<th class="checkbox-column">
+                           <input type="checkbox" />
+                       </th>
+                       <th>Rendering engine</th>
+                       <th>Browser</th>
+                       <th>Platform(s)</th>
+                       <th>Engine version</th>
+                       <th>CSS grade</th>
+                   </tr>
+               </thead>
+               <tbody>
+                   <tr>
+                   	<td class="checkbox-column">
+                           <input type="checkbox"/>
+                       </td>
+                       <td>Trident</td>
+                       <td>Internet Explorer 4.0</td>
+                       <td>Win 95+</td>
+                       <td>4</td>
+                       <td>X</td>
+                   </tr>
+                   <tr>
+                   	<td class="checkbox-column">
+                           <input type="checkbox"/>
+                       </td>
+                       <td>Trident</td>
+                       <td>Internet Explorer 5.0</td>
+                       <td>Win 95+</td>
+                       <td>5</td>
+                       <td>C</td>
+                   </tr>
+                   <tr>
+                   	<td class="checkbox-column">
+                           <input type="checkbox"/>
+                       </td>
+                       <td>Trident</td>
+                       <td>Internet Explorer 5.5</td>
+                       <td>Win 95+</td>
+                       <td>5.5</td>
+                       <td>A</td>
+                   </tr>
+                   <tr>
+                   	<td class="checkbox-column">
+                           <input type="checkbox"/>
+                       </td>
+                       <td>Trident</td>
+                       <td>Internet Explorer 6</td>
+                       <td>Win 98+</td>
+                       <td>6</td>
+                       <td>A</td>
+                   </tr>
+                   <tr>
+                   	<td class="checkbox-column">
+                           <input type="checkbox"/>
+                       </td>
+                       <td>Trident</td>
+                       <td>Internet Explorer 7</td>
+                       <td>Win XP SP2+</td>
+                       <td>7</td>
+                       <td>A</td>
+                   </tr>
+               </tbody>
+               
+                -->
+           </t:grid>
+       </div>    	
+       </t:form>
+   </div> 
+        
+<style type="text/css">
+	DIV.t-data-grid-pager SPAN.current{
+		background-color: #c5d52b;
+	}
+	DIV.t-data-grid-pager A, DIV.t-data-grid-pager SPAN.current {
+		border: none;
+	}
+	DIV.t-data-grid-pager A:hover {
+		border: none;
+	}
+	
+	DIV.t-data-grid-pager {
+		border-top: 1px solid #bebebe;
+		padding: 8px;
+		margin: 0;
+		background-color: #f5f5f5;
+	}
+</style>
+</html>

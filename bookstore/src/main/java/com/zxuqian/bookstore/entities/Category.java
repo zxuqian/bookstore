@@ -38,6 +38,8 @@ public class Category implements Serializable {
 	@OneToMany(mappedBy="parent", cascade=CascadeType.REMOVE)
 	private List<Category> children = new ArrayList<Category>();
 	
+	private boolean navigation;
+	
 	public Category() {
 	}
 	public Long getId() {
@@ -161,5 +163,11 @@ public class Category implements Serializable {
 	public void setTreeName(String treeName) {
 		this.treeName = treeName;
 	}
-
+	public boolean isNavigation() {
+		return navigation;
+	}
+	public void setNavigation(boolean navigation) {
+		this.navigation = navigation;
+	}
+	
 }

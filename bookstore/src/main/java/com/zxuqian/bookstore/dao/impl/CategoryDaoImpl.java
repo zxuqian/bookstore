@@ -52,4 +52,8 @@ public class CategoryDaoImpl implements CategoryDao {
 		this.session.delete(this.getCategoryById(categoryId));
 	}
 
+	public List<Category> getAllCategories() {
+		return this.session.createQuery("from Category").list();
+	}
+
 }
