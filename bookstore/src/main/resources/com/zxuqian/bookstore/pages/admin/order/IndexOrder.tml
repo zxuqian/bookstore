@@ -1,0 +1,52 @@
+<html t:type="admin/layout" title="bookstore Index"
+	xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd" xmlns:p="tapestry:parameter">
+	<!-- Most of the page content, including <head>, <body>, etc. tags, comes 
+		from Layout.tml -->
+	<!-- Statistics Button Container -->
+	<div class="mws-panel grid_8">
+		<div class="mws-panel-header">
+			<span>
+				<i class="icon-table"></i>
+				订单管理
+			</span>
+		</div>
+		<div class="mws-panel-body no-padding">
+			<t:jquery.datatable class="mws-datatable-fn mws-table" include="orderNumber, createdDate, total, notes"
+				rowsPerPage="3" source="orders" row="order" options="options">
+			
+			</t:jquery.datatable>
+		
+		<!-- 
+			<table class="mws-datatable mws-table">
+				<thead>
+					<tr>
+						<th>Rendering engine</th>
+						<th>Browser</th>
+						<th>Platform(s)</th>
+						<th>Engine version</th>
+						<th>CSS grade</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Trident</td>
+						<td>Internet
+							Explorer 4.0</td>
+						<td>Win 95+</td>
+						<td>4</td>
+						<td>X</td>
+					</tr>
+				</tbody>
+			</table>
+			
+		 -->
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("#datatable").attr("class", "mws-datatable mws-table dataTable");
+			$("#datatable tfoot").remove();
+		});
+	</script>
+</html>

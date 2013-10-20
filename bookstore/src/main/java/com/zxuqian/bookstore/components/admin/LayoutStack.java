@@ -63,7 +63,7 @@ public class LayoutStack implements JavaScriptStack {
 		styleSheets.add(new StylesheetLink(assetSource.getContextAsset("layout/admin/jui/jquery-ui.custom.css", null)));
 		styleSheets.add(new StylesheetLink(assetSource.getContextAsset("layout/admin/css/mws-theme.css", null)));
 		styleSheets.add(new StylesheetLink(assetSource.getContextAsset("layout/admin/css/themer.css", null)));
-		styleSheets.add(new StylesheetLink(assetSource.getContextAsset("layout/admin/css/table.css", null)));
+		//styleSheets.add(new StylesheetLink(assetSource.getContextAsset("layout/admin/css/table.css", null)));
 		
 		return styleSheets;
 	}
